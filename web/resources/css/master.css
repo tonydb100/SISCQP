@@ -1,0 +1,200 @@
+body { margin: 0; font-size: 100%; line-height: 1.231; }
+h3{font-family: arial,"lucida grande", verdana;
+   font-size: 13px;
+   color: white;
+}
+.primaryContainer {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+}
+
+#Cuerpo {
+    float: none;
+    height: 148px;
+    margin-left: auto;
+    margin-top: 0px;
+    clear: both;
+    width: 800px;
+    margin-right: auto;
+}
+
+#box {
+    float: left;
+    height: auto;
+    margin-left: 0%;
+    margin-top: 0px;
+    clear: none;
+    width: 99.999297%;
+}
+
+#image {
+    float: left;
+    width: auto;
+    height: auto;
+    margin-left: 2.957031%;
+    margin-top: 18px;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: 0px;
+    max-width: 100px;
+}
+
+#text {
+    float: none;
+    font-size: 1.2em;
+    width: 76.333333%;
+    height: auto;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1em;
+    margin-left: auto;
+    /* margin-top: 62px;*/
+    clear: none;
+    min-height: 26px;
+    margin-right: auto;
+    font-family: arial;
+    margin-bottom: 20px;
+}
+
+#box1 {
+    float: left;
+    height: 68px;
+    margin-left: 0%;
+    margin-top: 0px;
+    clear: none;
+    width: 100%;
+    background-color: rgb(28, 27, 27);
+    background-image:-webkit-linear-gradient(270deg, rgb(82, 82, 82) 0%, rgb(0, 0, 0) 100%);
+    background-image: linear-gradient(180deg, rgb(82, 82, 82) 0%, rgb(0, 0, 0) 100%);
+    background-attachment: scroll;
+    -webkit-background-size: auto;
+    background-size: auto;
+    background-position: 0% 0%;
+    background-repeat: repeat repeat;
+}
+
+#box2 {
+    float: left;
+    height: 68px;
+    margin-left: 0%;
+    margin-top: 0px;
+    clear: none;
+    width: 100%;
+    background-image:-webkit-linear-gradient(270deg, rgb(82, 82, 82) 0%, rgb(0, 0, 0) 100%);
+    background-image: linear-gradient(180deg, rgb(82, 82, 82) 0%, rgb(0, 0, 0) 100%);
+    background-attachment: scroll;
+    -webkit-background-size: auto;
+    background-size: auto;
+    background-color: rgb(28, 27, 27);
+    margin-right: 0%;
+    background-position: 0% 0%;
+    background-repeat: repeat repeat;
+}
+
+#text1 {
+    float: none;
+    font-size: 1em;
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 19px;
+    clear: none;
+    min-height: 0px;
+    color: #000;
+    margin-right: auto;
+    font-family: arial;
+    margin-bottom: 15px;
+}
+
+#text2 {
+    font-size: 1.3em;
+    width: auto;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 20px;
+    clear: none;
+    min-height: 0px;
+    color: #000;
+    font-family: arial;
+}
+
+#text3 {
+    font-size: .6em;
+    width: auto;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 20px;
+    clear: none;
+    min-height: 0px;
+    color: #000;
+    font-family: arial;
+}
+
+@media only screen and (max-width: 800px) {
+    #Cuerpo {
+        width: 100%;
+    }
+
+    #text {
+        height: auto;
+        font-size: 1.3em;
+        /* margin-top: 62px;*/
+        margin-left: auto;
+        clear: none;
+        float: none;
+        min-height: 30px;
+        margin-right: auto;
+    }
+}
+
+
+
+@media only screen and (max-width: 550px) {
+    #text {
+        margin-top: 4px;
+        margin-left: auto;
+        clear: none;
+        float: none;
+        height: auto;
+        min-height: 37.015625px;
+        width: 106.285402%;
+        font-size: 1.3em;
+        margin-right: auto;
+    }
+
+
+    #image {
+        clear: none;
+        margin-left: auto;
+        float: none;
+        margin-top: 0px;
+        height: auto;
+        width: 80px;
+        max-width: none;
+        margin-right: auto;
+    }
+
+    #Cuerpo {
+        height: 148px;
+    }
+
+}
+@media only screen and (max-width: 400px) {
+    #text2{
+        margin-top: 0px;
+        height: 40px;
+    }
+}
+

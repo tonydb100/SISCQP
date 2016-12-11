@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+
+    <h:head>
+        <title>SISCQP</title>
+    </h:head>
+
+    <h:body>
+
+        <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <h:form>
+                    <p:panel header="Registro de Pagos">
+                        <p:messages autoUpdate="true"/>
+
+                        <h:panelGrid id="grid" columns="4" cellpadding="5">
+                            <h:outputLabel for="nombre" value="Nombre:" style="font-weight:bold"/>                    
+                            <p:inputText id="nombre" value="#{validationView.text}" required="true" label="Nombre"/>
+                            <p:message for="nombre" />
+                            <h:outputText value="#{validationView.text}" />
+
+                            <h:outputLabel for="apellidos" value="Apellidos:" style="font-weight:bold"/>                    
+                            <p:inputText id="apellidos" value="#{validationView.text}" required="true" label="Apellidos"/>
+                            <p:message for="apellidos" />
+                            <h:outputText value="#{validationView.text}" />
+
+                            <h:outputLabel for="cedula" value="Cedula:" style="font-weight:bold"/>                    
+                            <p:inputText id="cedula" value="#{validationView.text}" required="true" label="Cedula"/>
+                            <p:message for="cedula" />
+                            <h:outputText value="#{validationView.text}" />
+                            
+                            
+                            <h:outputLabel for="Ruta" value="Rutas:" style="font-weight:bold"/> 
+                            <h:selectOneMenu value="">
+                                <f:selectItem itemLabel="Seleccione la ruta transitada" itemValue=""/>
+                                <f:selectItem itemLabel="Escazu" itemValue="1234576890"/>
+                                <f:selectItem itemLabel="Ciudad Colon" itemValue="31236544523"/>
+                                <f:selectItem itemLabel="San Rafael" itemValue="2356274572"/>
+                                <f:selectItem itemLabel="Guacima" itemValue="23462457245"/>
+                                <f:selectItem itemLabel="Siquiares" itemValue="23462457245"/>
+                                <f:selectItem itemLabel="Rampa Atenas" itemValue="23462457245"/>
+                                <f:selectItem itemLabel="Atenas" itemValue="23462457245"/>
+                                <f:selectItem itemLabel="Pozon" itemValue="23462457245"/>
+                                <f:selectItem itemLabel="Rampa Pozon" itemValue="23462457245"/>
+                                <f:selectItem itemLabel="RUTAS DE CARTAGO" itemValue="23462457245"/>
+                            </h:selectOneMenu>
+                            <p:message for="cedula" />
+                            
+                            <h:outputLabel for="idQuickPass" value="idQuickPass:" style="font-weight:bold"/> 
+                            <h:selectOneMenu value="" style="font-weight:bold">
+                                <f:selectItem itemLabel="idQuickPass" itemValue=""/>
+                                <f:selectItem itemLabel="1234-5768-0090-0000" itemValue="1234576890"/>
+                                <f:selectItem itemLabel="3123-6544-5230-9944" itemValue="31236544523"/>
+                                <f:selectItem itemLabel="2356-2745-7249-4515" itemValue="2356274572"/>
+                                <f:selectItem itemLabel="2346-2457-2450-4444" itemValue="23462457245"/>
+                            </h:selectOneMenu>
+                            <p:message for="cedula" />
+                            
+                        </h:panelGrid>
+
+                        <p:commandButton value="Registrar" style="margin-right:10px"/>
+
+                    </p:panel>
+                </h:form>
+                <!--
+                                </h:form>
+                
+                
+                                <div class="container">
+                                    <form class="well form-horizontal" action=" " method="post" id="contact_form"><fieldset>
+                                            <legend>SISCQP</legend>
+                
+                                            <div class="form-group"> 
+                                                <label class="col-md-4 control-label">QuickPass Asociados</label>
+                
+                                                <div class="col-md-4 selectContainer">
+                
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-list" /></span>
+                                                        <select name="state" class="form-control selectpicker">
+                
+                                                            <option value=" ">Seleccione el dispositivo</option>
+                                                            <option>QuickPass #1</option>
+                                                            <option>QuickPass #2</option>
+                                                            <option>QuickPass #3</option>
+                                                            <option>QuickPass #4</option>
+                                                            <option>QuickPass #5</option>
+                                                        </select>
+                                                    </div></div></div>
+                
+                                            <div class="form-group"> 
+                                                <label class="col-md-4 control-label">Listado de Rutas</label>
+                
+                                                <div class="col-md-4 selectContainer">
+                
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-list" /></span>
+                                                        <select name="state" class="form-control selectpicker">
+                
+                                                            <option value=" ">Seleccione la ruta transitada</option>
+                                                            <option>Escazu</option>
+                                                            <option>Ciudad Colon</option>
+                                                            <option>Peaje San Rafael</option>
+                                                            <option>Guacima</option>
+                                                            <option>Siquiares</option>
+                                                            <option>Rampa Atenas</option>
+                                                            <option>Atenas</option>
+                                                            <option>Pozon</option>
+                                                            <option>Rampa Pozon</option>
+                                                            <option>RUTAS DE CARTAGO</option>
+                                                        </select>
+                                                    </div></div></div>
+                
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Monto</label> 
+                
+                                                <div class="col-md-4 inputGroupContainer">
+                
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-usd" /></span>
+                                                        <input name="monto" placeholder="Monto Pagado" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Descripcion</label>
+                
+                                                <div class="col-md-4 inputGroupContainer">
+                
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" /></span>
+                                                        <textarea class="form-control" name="comment" placeholder="..."></textarea>
+                                                    </div>
+                                                </div></div>
+                
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" />
+                
+                                                <div class="col-md-4">
+                                                    <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send" /></button>
+                                                </div>
+                
+                                                <div class="col-md-4">
+                                                    <button type="submit" class="btn btn-warning">Proxima Solicitud </button>
+                                                </div></div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                /!-->
+            </ui:define>
+
+        </ui:composition>
+
+
+    </h:body>
+</html>
