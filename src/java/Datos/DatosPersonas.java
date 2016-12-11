@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatosPersonas extends ValidarConexion {
+public class DatosPersonas extends ValidarQuerys {
    
     public void registrar(Personas per) throws Exception{
         try {

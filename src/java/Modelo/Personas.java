@@ -14,7 +14,7 @@ public class Personas {
     private String puesto;
     private Date fechaRegistro;
     private String jefeDirecto;
-    private boolean estado;
+    private int estado;
 
     public int getIdPersona() {
         return idPersona;
@@ -24,11 +24,11 @@ public class Personas {
         this.idPersona = idPersona;
     }
     
-    public boolean isEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
     
