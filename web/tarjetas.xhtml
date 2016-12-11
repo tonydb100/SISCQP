@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Registro de Rutas</title>
+    </h:head>
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <h:form id="fm">
+
+                    <p:dataTable id="data" value="Persona" var="persona">
+
+                        <p:column headerText="idTarjeta">
+                            <p:outputLabel value="1234567890"/>
+                        </p:column>
+                        <p:column headerText="Numero Tarjeta">
+                            <p:outputLabel value="16 numeros"/>
+                        </p:column>
+                        <p:column headerText="Tarjeta Habiente">
+                            <p:outputLabel value="Anthony Morales Salazar"/>
+                        </p:column>
+                        <p:column headerText="idReserva">
+                            <p:outputLabel value="1-1654-1235"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+
+                    <p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update=":dlgDatos"/>
+
+                </h:form>
+
+                <p:dialog header="Registro de Pago" widgetVar="wdlgDatos" id="dlgDatos">
+                    <h:form>
+
+                        <p:outputLabel value="idTarjeta"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
+                        <br/>
+                        <p:outputLabel value="Numero Tarjeta"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
+                        <br/>
+                        <p:outputLabel value="Tarjeta Habiente"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
+                        <br/>
+                        <p:outputLabel value="idReserva"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
+                        <br/>
+                        
+                        <!-- 
+                            idPersona       = AutoIncrement
+                            Estado          = Automaticamente ACTIVO
+                            FechaRegistro   = Sys.Date, insertada automaticamente por el sistema
+                        !-->
+                        <p:commandButton value="Registrar" actionListener="#{personaBean.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                        <p:commandButton style="right: inherit" value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+
+                    </h:form>
+                </p:dialog>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
