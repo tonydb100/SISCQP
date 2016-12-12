@@ -14,7 +14,7 @@ public class Personas {
     private String puesto;
     private Date fechaRegistro;
     private String jefeDirecto;
-    private boolean estado;
+    private String estado;
 
     public int getIdPersona() {
         return idPersona;
@@ -24,11 +24,11 @@ public class Personas {
         this.idPersona = idPersona;
     }
     
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
     
@@ -93,16 +93,10 @@ public class Personas {
     }
 
     public void setFechaRegistro(Date fechaRegistro) {
+        
+        //Obtener fecha, formatearla y guardarla
         this.fechaRegistro = fechaRegistro;
     }
-
-//    public int getIdQP() {
-//        return idQP;
-//    }
-//
-//    public void setIdQP(int idQP) {
-//        this.idQP = idQP;
-//    }
 
     public String getJefeDirecto() {
         return jefeDirecto;

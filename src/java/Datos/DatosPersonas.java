@@ -1,38 +1,47 @@
-//package Datos;
-//
-//import Modelo.Personas;
-//import java.sql.Date;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class DatosPersonas extends ValidarQuerys {
-//   
-//    public void registrar(Personas per) throws Exception{
-//        try {
-//            this.Conectar();
-//            PreparedStatement st = this.getCn().prepareStatement("INSERT INTO personas (nombre, apellidos, cedula, foto, rol, "
-//                                                                + "departamento, puesto, fechaRegistro, jefeDirecto, estado) "
-//                                                                    + "values (?,?,?,?,?,?,?,?,?,?)");
-//            st.setString(1, per.getNombre());
-//            st.setString(2, per.getApellidos());
-//            st.setString(3, per.getCedula());
-//            st.setString(4, per.getFoto());
-//            st.setInt(5, per.getRol());
-//            st.setString(6, per.getDepartamento());
-//            st.setString(7, per.getPuesto());
-//            st.setDate(8, (Date) per.getFechaRegistro());
-//            st.setString(9, per.getJefeDirecto());
-//            st.setBoolean(10, per.isEstado());
-//            st.executeUpdate();
-//        } catch (ClassNotFoundException | SQLException e) {
-//            throw e;
-//        } finally {
-//            this.cerrar();
-//        }
-//    }
+package Datos;
+
+import Modelo.Personas;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+public class DatosPersonas extends ValidarQuerys {
+   
+    public void registrar(Personas per) throws Exception{
+        try {
+            this.Conectar();
+            PreparedStatement st = this.getCn().prepareStatement("INSERT INTO personas (cedula, nombre, apellidos, foto, rol, "
+                                                                + "departamento, puesto, fechaRegistro, jefeDirecto, estado) "
+                                                                    + "values (?,?,?,?,?,?,?,?,?,?)");
+            st.setString(1, per.getCedula());
+            st.setString(2, per.getNombre());
+            st.setString(3, per.getApellidos());
+            st.setString(4, per.getFoto());
+            st.setInt(5, per.getRol());
+            st.setString(6, per.getDepartamento());
+            st.setString(7, per.getPuesto());
+            st.setDate(8, (java.sql.Date) per.getFechaRegistro());
+            st.setString(9, per.getJefeDirecto());
+            st.setString(10, "ACTIVO");
+            st.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+    
+    public Date setFechaRegistro(){
+        
+        Calendar c = GregorianCalendar.getInstance();
+        Date fecha = c.getTime();
+        return fecha;
+//        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        JOptionPane.showMessageDialog(null, "Fecha 1: " + f.format(fecha));
+        
+    }
 //    
 //    public List<Personas> listar() throws Exception{
 //        
@@ -41,7 +50,7 @@
 //        
 //        try {
 //            this.Conectar();
-//            PreparedStatement st = this.getCn().prepareStatement("SELECT nombre, apellidos, cedula, foto, rol, departamento, puesto, "
+//            PreparedStatement st = this.getCn().prepareStatement("SELECT cedula, nombre, apellidos, foto, rol, departamento, puesto, "
 //                                                                    + "fechaRegistro, jefeDirecto, estado FROM personas");
 //            rs = st.executeQuery();
 //            lista = new ArrayList();
@@ -49,9 +58,9 @@
 //            while (rs.next()) {                
 //                Personas per = new Personas();
 //                per.setIdPersona(rs.getInt("idPersona"));
+//                per.setCedula(rs.getString("cedula"));
 //                per.setNombre(rs.getString("nombre"));
 //                per.setApellidos(rs.getString("apellidos"));
-//                per.setCedula(rs.getString("cedula"));
 //                per.setFoto(rs.getString("foto"));
 //                per.setRol(rs.getInt("rol"));
 //                per.setDepartamento(rs.getString("departamento"));
@@ -124,4 +133,4 @@
 //        }
 //    }
 //     
-//}
+}
