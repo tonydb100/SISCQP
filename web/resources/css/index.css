@@ -1,0 +1,22 @@
+#banner{
+    width: auto;
+    align-self: center;
+    background-color: #ffd800;
+}
+
+#menu{
+    font-size: 17px;
+    border-right: #000;
+    border: #cc00cc;
+}
+
+#footer{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 16.5px;
+    padding-top: .7em;
+    padding-bottom: .7em;
+    background-color: #ffd800;
+}
