@@ -52,7 +52,13 @@
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
                         <p:outputLabel value="idReserva"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
+                        <p:selectOneMenu style="margin-left: 2em" value="#{personaBean.persona.sexo}">
+                            <f:selectItem itemLabel="LISTA DE RESERVAS" itemValue=""/>
+                            <f:selectItem itemLabel="RESERVA GASOLINAS" itemValue="idReserva Gasolinas"/>
+                            <f:selectItem itemLabel="RESERVA CARRETERAS" itemValue="idReserva Carreteras"/>
+                            <f:selectItem itemLabel="RESERVA VEHICULOS" itemValue="idReserva Vehiculos"/>
+                            <f:selectItem itemLabel="DEFINIR LISTA DE RESERVAS." itemValue=""/>
+                        </p:selectOneMenu>
                         <br/>
                         
                         <!-- 
