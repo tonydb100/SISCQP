@@ -49,16 +49,26 @@ public class ManejadorPersona {
    
     public void operar() throws Exception{
         
-        switch(accion){
-            case "Registrar":
-                this.registrar();
-                this.limpiar();
-                break;
-            case "Modificar":
-//                this.modificar();
-//                this.limpiar();
-                break;
+        DatosPersonas dp;
+        
+        try {
+            dp = new DatosPersonas();
+            dp.registrar(persona);
+            this.limpiar();
+//            this.listar("V");
+        } catch (Exception e) {
+            throw e;
         }
+//        switch(accion){
+//            case "Registrar Nuevo":
+//                this.registrar();
+//                this.limpiar();
+//                break;
+//            case "Modificar":
+////                this.modificar();
+////                this.limpiar();
+//                break;
+//        }
     }
     
     private void limpiar(){
@@ -79,6 +89,7 @@ public class ManejadorPersona {
         try {
             dp = new DatosPersonas();
             dp.registrar(persona);
+            this.limpiar();
 //            this.listar("V");
         } catch (Exception e) {
             throw e;

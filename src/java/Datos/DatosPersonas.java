@@ -1,12 +1,11 @@
 package Datos;
 
 import Modelo.Personas;
-import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class DatosPersonas extends ValidarQuerys {
    
@@ -23,15 +22,25 @@ public class DatosPersonas extends ValidarQuerys {
             st.setInt(5, per.getRol());
             st.setString(6, per.getDepartamento());
             st.setString(7, per.getPuesto());
-            st.setDate(8, (Date) per.getFechaRegistro());
+            st.setDate(8, (java.sql.Date) per.getFechaRegistro());
             st.setString(9, per.getJefeDirecto());
-            st.setInt(10, per.getEstado());
+            st.setString(10, "ACTIVO");
             st.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             throw e;
         } finally {
             this.cerrar();
         }
+    }
+    
+    public Date setFechaRegistro(){
+        
+        Calendar c = GregorianCalendar.getInstance();
+        Date fecha = c.getTime();
+        return fecha;
+//        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        JOptionPane.showMessageDialog(null, "Fecha 1: " + f.format(fecha));
+        
     }
 //    
 //    public List<Personas> listar() throws Exception{

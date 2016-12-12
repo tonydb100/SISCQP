@@ -56,7 +56,7 @@
 
                     </p:dataTable>
 
-                    <p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos"/>
+                    <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos"/>
 
                 </h:form>
 
@@ -91,8 +91,8 @@
                             idPersona       = AutoIncrement
                             Estado          = Automaticamente ACTIVO
                             FechaRegistro   = Sys.Date, insertada automaticamente por el sistema
-                        !-->
-                        <p:commandButton value=#{manejadorPersona.accion} actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                        -->
+                        <p:commandButton value="Registrar" actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
                         <p:commandButton style="right: inherit" value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
 
                     </h:form>
