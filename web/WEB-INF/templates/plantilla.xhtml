@@ -9,23 +9,21 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>SISCQP</title>
+        <h:outputStylesheet library="css" name="index.css"/>
     </h:head>
 
     <ui:insert name="top">
-        <div id="top">
+        
+        <div id="banner">
             <ui:insert name="top">
-                <div align="left">
-                    <h:graphicImage style="background-color: #ffd800"  library="images" name="banner_estudios.png"/>
-                </div>                
+                <h:graphicImage library="images" name="banner_estudios.png"/>
             </ui:insert>
         </div>
 
 
         <h:form>  
             <p:growl id="messages"/>
-
-            <p:menubar>
-
+            <p:menubar id="menu">
                 <p:menuitem style="align-content: right" value="Pagina Principal" url="principal.xhtml"/>
 
                 <p:menuitem value="Pagos" url="rutas.xhtml" />
@@ -51,16 +49,17 @@
     <ui:insert name="content"></ui:insert>
 
     <ui:insert name="bottom" id="bottom">
-
-        <p id="text3" align="center">
-            Anthony Morales Salazar + Jorge Ribas Zabala
-        </p>
-        <p id="text1" align="center">
-            Ministerio de Obras P&uacute;blicas y Transportes<br /> &copy;&nbsp;2016
-        </p> 
-        <p:idleMonitor timeout="300000">
-            <p:ajax event="idle" listener="#{LoginB.llamarpaginaerror}"/>
-        </p:idleMonitor>                 
+        <div id="footer">
+            <p id="text1" align="center">
+                Ministerio de Obras P&uacute;blicas y Transportes<br /> &copy;&nbsp;2016
+            <p id="text3" align="center">
+                Anthony Morales Salazar + Jorge Ribas Zabala
+            </p> 
+            </p>
+            <p:idleMonitor timeout="300000">
+                <p:ajax event="idle" listener="#{LoginB.llamarpaginaerror}"/>
+            </p:idleMonitor>                 
+        </div>
 
     </ui:insert>
 

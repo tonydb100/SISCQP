@@ -16,7 +16,7 @@
 
             <ui:define name="content">
 
-                <h:form id="fm">
+                <h:form style="margin-top: 1em" id="fm">
 
                     <p:dataTable id="data" value="Persona" var="persona">
 
@@ -52,7 +52,7 @@
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
                         <p:outputLabel value="Fecha Registro"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
+                        <p:calendar style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
                         <!-- 
                             idPersona       = AutoIncrement
