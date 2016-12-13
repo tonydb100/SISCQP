@@ -20,13 +20,13 @@
 
                     <p:dataTable style="margin-top: 1em" id="data" value="Persona" var="persona">
 
-                        <p:column headerText="idReservas">
+                        <p:column headerText="Código de Reserva">
                             <p:outputLabel value="45454546"/>
                         </p:column>
                         <p:column headerText="Monto Restante">
                             <p:outputLabel value="1500000 Colones"/>
                         </p:column>
-                        <p:column headerText="Descripcion">
+                        <p:column headerText="Descripción">
                             <p:outputLabel value="Reserva para el Departamento de Gasolinas"/>
                         </p:column>
                         
@@ -39,13 +39,13 @@
                 <p:dialog header="Registro de Pago" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
 
-                        <p:outputLabel value="idReservas"/>
+                        <p:outputLabel value="Código de Reserva"/>
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
                         <p:outputLabel value="Monto Restante"/>
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
-                        <p:outputLabel value="Descripcion"/>
+                        <p:outputLabel value="Descripción"/>
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
                         <!-- 
