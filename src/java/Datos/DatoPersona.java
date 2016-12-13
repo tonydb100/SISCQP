@@ -1,15 +1,22 @@
 package Datos;
 
 import Modelo.Persona;
+import static com.sun.jndi.toolkit.dir.SearchFilter.format;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class DatoPersona extends Conexion {
    
     public void registrar(Persona per) throws Exception{
+        
+//        per.getFechaRegisto( setFechaRegisto(this.obtenerHora()) );
         try {
             this.Conectar();
             PreparedStatement st = this.getCn().prepareStatement("INSERT INTO persona (persona_cedula, persona_nombre, persona_apellidos, persona_foto, persona_rol, "
@@ -106,7 +113,7 @@ public class DatoPersona extends Conexion {
         try {
             this.Conectar();
             PreparedStatement st = this.getCn().prepareStatement("UPDATE persona SET persona_cedula = ?, persona_nombre = ?, persona_apellidos = ?, persona_foto = ?, persona_rol = ?, "
-                                            + "persona_departamento = ?, persona_puesto = ?, persona_fechaRegistro = ?, persona_jefeDirecto = ?, persona_estado = ? WHERE persona_codigo = ?");
+                            + "persona_departamento = ?, persona_puesto = ?, persona_fechaRegistro = ?, persona_jefeDirecto = ?, persona_estado = ? WHERE persona_codigo = ?");
             st.setString(1, per.getCedula());
             st.setString(2, per.getNombre());
             st.setString(3, per.getApellidos());

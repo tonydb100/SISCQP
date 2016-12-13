@@ -22,7 +22,7 @@
                 <h:form id="fm">
                     <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos"/>
 
-                    <p:dataTable style="margin-top: 1em" id="data" value="#{manejadorPersona.lstPersonas}" var="persona">
+                    <p:dataTable style="margin-top: 1em" id="data" value="#{manejadorPersona.lstPersona}" var="persona">
 
                         <p:column headerText="Cedula">
                             <p:outputLabel value="#{persona.cedula}"/>
@@ -99,10 +99,10 @@
                         
                         <p:outputLabel value="Puesto"/>
                         <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.puesto}"/><br/>
-                        
+                        <!--
                         <p:outputLabel value="Fecha Reg"/>
                         <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.fechaRegisto}"/><br/>
-                        
+                        -->
                         <p:outputLabel value="Jefe Directo"/>
                         <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.jefeDirecto}"/><br/>
                         

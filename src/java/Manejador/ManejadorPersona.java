@@ -2,6 +2,10 @@ package Manejador;
 
 import Modelo.Persona;
 import Datos.DatoPersona;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -15,6 +19,7 @@ public class ManejadorPersona {
     private Persona persona = new Persona();
     private List<Persona> lstPersona;
     private String accion;
+    private String fechaFinal;
 
     public String getAccion() {
         return accion;
@@ -39,6 +44,14 @@ public class ManejadorPersona {
 
     public void setLstPersona(List<Persona> lstPersona) {
         this.lstPersona = lstPersona;
+    }
+
+    public String getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(String fechaFinal) {
+        this.fechaFinal = fechaFinal;
     }
     
     private boolean isPostBack(){
@@ -85,6 +98,15 @@ public class ManejadorPersona {
         } catch (Exception e) {
             throw e;
         }
+    }
+    
+    public String obtenerHora(){
+        Calendar c = GregorianCalendar.getInstance();
+        Date fecha = c.getTime();
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        fechaFinal = f.format(fecha);
+        
+        return fechaFinal;
     }
     
     private void modificar() throws Exception{
