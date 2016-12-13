@@ -46,14 +46,6 @@ public class ManejadorPersona {
         this.lstPersona = lstPersona;
     }
 
-    public String getFechaFinal() {
-        return fechaFinal;
-    }
-
-    public void setFechaFinal(String fechaFinal) {
-        this.fechaFinal = fechaFinal;
-    }
-    
     private boolean isPostBack(){
         boolean res;
         res = FacesContext.getCurrentInstance().isPostback();
@@ -98,15 +90,6 @@ public class ManejadorPersona {
         } catch (Exception e) {
             throw e;
         }
-    }
-    
-    public String obtenerHora(){
-        Calendar c = GregorianCalendar.getInstance();
-        Date fecha = c.getTime();
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        fechaFinal = f.format(fecha);
-        
-        return fechaFinal;
     }
     
     private void modificar() throws Exception{
