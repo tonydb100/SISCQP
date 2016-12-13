@@ -19,17 +19,13 @@
                 <h:form style="margin-top: 1em" id="fm">
 
                     <p:dataTable id="data" value="Persona" var="persona">
-
-                        <p:column headerText="idTarjeta">
-                            <p:outputLabel value="1234567890"/>
-                        </p:column>
                         <p:column headerText="Numero Tarjeta">
                             <p:outputLabel value="16 numeros"/>
                         </p:column>
                         <p:column headerText="Tarjeta Habiente">
                             <p:outputLabel value="Anthony Morales Salazar"/>
                         </p:column>
-                        <p:column headerText="idReserva">
+                        <p:column headerText="Código de Reserva">
                             <p:outputLabel value="1-1654-1235"/>
                         </p:column>
                         
@@ -41,17 +37,13 @@
 
                 <p:dialog header="Registro de Pago" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
-
-                        <p:outputLabel value="idTarjeta"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
-                        <br/>
                         <p:outputLabel value="Numero Tarjeta"/>
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
                         <p:outputLabel value="Tarjeta Habiente"/>
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
-                        <p:outputLabel value="idReserva"/>
+                        <p:outputLabel value="Código de Reserva"/>
                         <p:selectOneMenu style="margin-left: 2em" value="#{personaBean.persona.sexo}">
                             <f:selectItem itemLabel="LISTA DE RESERVAS" itemValue=""/>
                             <f:selectItem itemLabel="RESERVA GASOLINAS" itemValue="idReserva Gasolinas"/>
