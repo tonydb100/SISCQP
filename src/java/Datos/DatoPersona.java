@@ -16,9 +16,9 @@ public class DatoPersona extends Conexion {
    
     public void registrar(Persona per) throws Exception{
         
-//        per.setFechaRegisto(this.obtenerHora());
         try {
             this.Conectar();
+//        per.setFechaRegisto(this.obtenerHora());
             PreparedStatement st = this.getCn().prepareStatement("INSERT INTO persona (persona_cedula, persona_nombre, persona_apellidos, persona_foto, persona_rol, "
                             + "persona_departamento, persona_puesto, persona_fechaRegistro, persona_jefeDirecto, persona_estado) "
                             + "values (?,?,?,?,?,?,?,?,?,?)");
@@ -41,6 +41,7 @@ public class DatoPersona extends Conexion {
     }
     
     public String obtenerHora(){
+        
         Calendar c = GregorianCalendar.getInstance();
         Date fecha = c.getTime();
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
