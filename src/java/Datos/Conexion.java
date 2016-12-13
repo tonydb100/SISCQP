@@ -1,27 +1,35 @@
 package Datos;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Conexion {
     
-    private static final String user = "root";;
-    private static final String pass = "root";
-    private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String cadena = "jdbc:mysql://localhost:3306/mydb";
+    private Connection cn;
     
-    
-    public static String user(){
-        return user;
+    public Connection getCn(){
+        return cn;
     }
     
-    public static String pass(){
-        return pass;
+    public void setCn(Connection cn){
+        this.cn = cn;
     }
     
-    public static String driver(){
-        return driver;
+    public void Conectar() throws ClassNotFoundException, SQLException{
+//        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//        cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=pruebapf;user=sa;password=1630");
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/siscqp?user=root&password=root");
     }
     
-    public static String cadena(){
-        return cadena;
+    public void cerrar() throws SQLException{
+        if (cn != null){
+            if (cn.isClosed() == false){
+                cn.close();
+            }
+        } 
     }
     
 }

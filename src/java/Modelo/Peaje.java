@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Peajes {
+public class Peaje {
 
     private int idPeaje;
     private String nombre;

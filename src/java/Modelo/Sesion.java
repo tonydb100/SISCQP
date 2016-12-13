@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Date;
 
-public class Sesiones {
+public class Sesion {
 
     private int idSesiones;
     private int idPersona;

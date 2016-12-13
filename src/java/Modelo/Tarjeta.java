@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Tarjetas {
+public class Tarjeta {
 
     private int idTarjetas;
     private String numeroTarjeta;

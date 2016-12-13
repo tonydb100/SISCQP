@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Reservas {
+public class Reserva {
 
     private int idReservas;
     private Double montoRestante;

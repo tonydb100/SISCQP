@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Registro de Rutas</title>
+    </h:head>
+
+    <h:body>
+
+        <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <f:event type="preRenderView" listener="#{manejadorPersona.listar('F')}"/>
+                <p:growl id="msj" autoUpdate="true"/>
+        
+                <h:form id="fm">
+                    <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos"/>
+
+                    <p:dataTable style="margin-top: 1em" id="data" value="#{manejadorPersona.lstPersonas}" var="persona">
+
+                        <p:column headerText="Cedula">
+                            <p:outputLabel value="#{persona.cedula}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Nombre">
+                            <p:outputLabel value="#{persona.nombre}"/>
+                        </p:column>
+
+                        <p:column headerText="Apellidos">
+                            <p:outputLabel value="#{persona.apellidos}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Foto">
+                            <p:outputLabel value="#{persona.foto}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Rol">
+                            <p:outputLabel value="#{persona.rol}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Departamento">
+                            <p:outputLabel value="#{persona.departamento}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Puesto">
+                            <p:outputLabel value="#{persona.puesto}"/>
+                        </p:column>
+                        
+                        <p:column headerText="FechaReg">
+                            <p:outputLabel value="#{persona.fechaRegisto}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Jefe">
+                            <p:outputLabel value="#{persona.jefeDirecto}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Estado">
+                            <p:outputLabel value="#{persona.estado}"/>
+                        </p:column>
+
+                        <p:column headerText="Modificar">
+                            <p:commandLink value="Modificar" actionListener="#{personaBean.leerID(persona)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
+                        </p:column>
+
+                        <p:column headerText="Eliminar">
+                            <p:commandLink value="Eliminar" actionListener="#{personaBean.eliminar(persona)}" update="data"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+
+                </h:form>
+
+                <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
+                    <h:form>
+                        <p:outputLabel value="Cedula"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.cedula}"/><br/>
+                        
+                        <p:outputLabel value="Nombre"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.nombre}"/><br/>
+                        
+                        <p:outputLabel value="Apellidos"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.apellidos}"/><br/>
+                        
+                        <p:outputLabel value="Foto"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.foto}"/><br/>
+                        
+                        <p:outputLabel value="Rol"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.rol}"/><br/>
+                        
+                        <p:outputLabel value="Departamento"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.departamento}"/><br/>
+                        
+                        <p:outputLabel value="Puesto"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.puesto}"/><br/>
+                        
+                        <p:outputLabel value="Fecha Reg"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.fechaRegisto}"/><br/>
+                        
+                        <p:outputLabel value="Jefe Directo"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.jefeDirecto}"/><br/>
+                        
+                        <p:outputLabel value="Estado"/>
+                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.estado}"/><br/>
+                        
+                        <p:commandButton value="#{manejadorPersona.accion}" actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                        <p:commandButton style="right: inherit" value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+
+                    </h:form>
+                </p:dialog>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

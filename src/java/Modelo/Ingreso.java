@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Date;
 
-public class Ingresos {
+public class Ingreso {
 
     private int idIngresos;
     private int idPersona;

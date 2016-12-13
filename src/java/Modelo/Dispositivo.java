@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Date;
 
-public class Dispositivos {
+public class Dispositivo {
 
     private int id;
     private String placaVehiculo;
