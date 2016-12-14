@@ -123,7 +123,7 @@ public class DatoPersona extends Conexion {
         try {
             this.Conectar();
             PreparedStatement st = this.getCn().prepareStatement("UPDATE persona SET persona_cedula = ?, persona_nombre = ?, persona_apellidos = ?, persona_foto = ?, persona_rol = ?, "
-                            + "persona_departamento = ?, persona_puesto = ?, persona_fechaRegistro = ?, persona_jefeDirecto = ?, persona_estado = ? WHERE persona_codigo = ?");
+                            + "persona_departamento = ?, persona_puesto = ?, persona_fechaRegistro = ?, persona_jefeDirecto = ?, persona_estado = ? WHERE persona_id = ?");
             st.setString(1, per.getCedula());
             st.setString(2, per.getNombre());
             st.setString(3, per.getApellidos());
@@ -134,6 +134,7 @@ public class DatoPersona extends Conexion {
             st.setString(8, per.getFechaRegisto());
             st.setString(9, per.getJefeDirecto());
             st.setInt(10, per.getEstado());
+            st.setInt(11, per.getCodigo());
             st.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             throw e;

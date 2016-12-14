@@ -65,11 +65,11 @@
                         </p:column>
 
                         <p:column headerText="Modificar">
-                            <p:commandLink value="Modificar" actionListener="#{personaBean.leerID(persona)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
+                            <p:commandLink value="Modificar" actionListener="#{manejadorPersona.leerID(persona)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
                         </p:column>
 
                         <p:column headerText="Eliminar">
-                            <p:commandLink value="Eliminar" actionListener="#{personaBean.eliminar(persona)}" update="data"/>
+                            <p:commandLink value="Eliminar" actionListener="#{manejadorPersona.eliminar(persona)}" update="data"/>
                         </p:column>
 
                     </p:dataTable>
