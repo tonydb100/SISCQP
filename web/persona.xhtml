@@ -24,7 +24,7 @@
 
                     <p:dataTable style="margin-top: 1em" id="data" value="#{manejadorPersona.lstPersona}" var="persona">
 
-                        <p:column headerText="Cedula">
+                        <p:column headerText="Cédula">
                             <p:outputLabel value="#{persona.cedula}"/>
                         </p:column>
                         
@@ -79,7 +79,7 @@
 
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
-                        <p:outputLabel value="Cedula"/>
+                        <p:outputLabel value="Cédula"/>
                         <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.cedula}"/><br/>
                         
                         <p:outputLabel value="Nombre"/>

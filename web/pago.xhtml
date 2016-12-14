@@ -30,13 +30,13 @@
                         </p:column>
                         <p:column headerText="Sentido">
                             <p:outputLabel value="San José"/> 
-                            
+
                             <!-- Para expresar el sentido podemos 
                             decir cual es el peaje que le sigue, para así
                             poder ver la ruta que tomo el conductor..
                             En este caso, San José, por que paso por el
                             peaje de Escazu con sentido a San José!-->
-                            
+
                         </p:column>
                         <p:column headerText="Tipo Vehiculo">
                             <p:outputLabel value="Liviano/2 Ejes"/>
@@ -76,67 +76,53 @@
                         <p:outputLabel value="Peaje"/>
                         <p:selectOneMenu style="margin-left: 6.6em" value="#{personaBean.persona.sexo}">
                             <f:selectItem itemLabel="Seleccione la ruta transitada" itemValue=""/>
-                                <f:selectItem itemLabel="Escazu" itemValue="1234576890"/>
-                                <f:selectItem itemLabel="Ciudad Colon" itemValue="31236544523"/>
-                                <f:selectItem itemLabel="San Rafael" itemValue="2356274572"/>
-                                <f:selectItem itemLabel="Guacima" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Siquiares" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="RUTAS DE CARTAGO" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Escazu" itemValue="1234576890"/>
+                            <f:selectItem itemLabel="Ciudad Colon" itemValue="31236544523"/>
+                            <f:selectItem itemLabel="San Rafael" itemValue="2356274572"/>
+                            <f:selectItem itemLabel="Guacima" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Siquiares" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Rampa Atenas" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Atenas" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Pozon" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Rampa Pozon" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="RUTAS DE CARTAGO" itemValue="23462457245"/>
                         </p:selectOneMenu>
                         <br/>
                         <p:outputLabel value="Sentido"/>
                         <p:selectOneMenu style="margin-left: 6.6em" value="#{personaBean.persona.sexo}">
                             <f:selectItem itemLabel="Seleccione la ruta transitada" itemValue=""/>
-                                <f:selectItem itemLabel="Escazu" itemValue="1234576890"/>
-                                <f:selectItem itemLabel="Ciudad Colon" itemValue="31236544523"/>
-                                <f:selectItem itemLabel="San Rafael" itemValue="2356274572"/>
-                                <f:selectItem itemLabel="Guacima" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Siquiares" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="RUTAS DE CARTAGO" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="San José" itemValue="1234576890"/>
+                            <f:selectItem itemLabel="Ciudad Colon" itemValue="31236544523"/>
+                            <f:selectItem itemLabel="San Rafael" itemValue="2356274572"/>
+                            <f:selectItem itemLabel="Guacima" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Siquiares" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Rampa Atenas" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Atenas" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Pozon" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Rampa Pozon" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="RUTAS DE CARTAGO" itemValue="23462457245"/>
                         </p:selectOneMenu>
                         <br/>
                         <p:outputLabel value="Tipo Vehiculo"/>
                         <p:selectOneMenu style="margin-left: 6.6em" value="#{personaBean.persona.sexo}">
                             <f:selectItem itemLabel="Seleccione el Tipo de Vehiculo" itemValue=""/>
-                                <f:selectItem itemLabel="Escazu" itemValue="1234576890"/>
-                                <f:selectItem itemLabel="Ciudad Colon" itemValue="31236544523"/>
-                                <f:selectItem itemLabel="San Rafael" itemValue="2356274572"/>
-                                <f:selectItem itemLabel="Guacima" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Siquiares" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="RUTAS DE CARTAGO" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="Motocicleta" itemValue="23462457245"/>    
+                            <f:selectItem itemLabel="2 Ejes" itemValue="1234576890"/>
+                            <f:selectItem itemLabel="4 Ejes" itemValue="31236544523"/>
+                            <f:selectItem itemLabel="6 Ejes" itemValue="2356274572"/>
                         </p:selectOneMenu>
                         <br/>
                         <p:outputLabel value="Monto"/>
                         <p:selectOneMenu style="margin-left: 6.6em" value="#{personaBean.persona.sexo}">
-                            <!-- PRIMEFACES Dropdown Demo !-->
+                            <!-- PRIMEFACES Dropdown Demo, hay que meter otras clases, falta investigar!-->
                             <f:selectItem itemLabel="Monto Asociado al TipoVehiculo" itemValue=""/>
-                                <f:selectItem itemLabel="Escazu" itemValue="1234576890"/>
-                                <f:selectItem itemLabel="Ciudad Colon" itemValue="31236544523"/>
-                                <f:selectItem itemLabel="San Rafael" itemValue="2356274572"/>
-                                <f:selectItem itemLabel="Guacima" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Siquiares" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Atenas" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="Rampa Pozon" itemValue="23462457245"/>
-                                <f:selectItem itemLabel="RUTAS DE CARTAGO" itemValue="23462457245"/>
+                            <f:selectItem itemLabel="340" itemValue="1234576890"/>
+                            <f:selectItem itemLabel="500" itemValue="31236544523"/>
+                            <f:selectItem itemLabel="260" itemValue="2356274572"/>
                         </p:selectOneMenu>
                         <br/>
                         <p:commandButton value="Registrar" actionListener="#{personaBean.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
                         <p:commandButton style="right: inherit" value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
-
                     </h:form>
                 </p:dialog>
 
