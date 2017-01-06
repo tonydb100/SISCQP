@@ -17,26 +17,30 @@
             <ui:define name="content">
 
                 <h:form style="margin-top: 1em" id="fm">
+                    <h:outputText value="Peaje: " />  
+                    <p:selectOneMenu value="#{manejadorPagos.peaje.nombre}" id="pea">  
+                           <f:selectItem itemLabel="Nombre Peaje" itemValue="" />
+                           <f:selectItems value="#{manejadorPagos.peaje.nombre}"/> 
+                           <p:ajax update="sent" />
+                    </p:selectOneMenu>
+                    <h:outputText value="Sentido: " />  
+                    <p:selectOneMenu value="#{category.subcatname}" id="sent"> 
+                            <f:selectItem itemLabel="Sentido" itemValue="" />
+                            <f:selectItems value="#{category.subCategoryName}"/>
+                    </p:selectOneMenu>
 
                     <p:dataTable id="data" value="Persona" var="persona">
-                        <p:column headerText="Código del Dispositivo">
-                            <p:outputLabel value="2356-2745-7249-4515"/>
+<!--                        <p:column headerText="Código del Dispositivo">
+                            <p:inputText value=""/>
                         </p:column>
                         <p:column headerText="Chofer">
-                            <p:outputLabel value="Anthony Morales"/>
+                            
                         </p:column>
                         <p:column headerText="Peaje">
-                            <p:outputLabel value="Escazu"/>
+                            <p:selectOneMenu value="Escazu"/>
                         </p:column>
                         <p:column headerText="Sentido">
                             <p:outputLabel value="San José"/> 
-
-                            <!-- Para expresar el sentido podemos 
-                            decir cual es el peaje que le sigue, para así
-                            poder ver la ruta que tomo el conductor..
-                            En este caso, San José, por que paso por el
-                            peaje de Escazu con sentido a San José!-->
-
                         </p:column>
                         <p:column headerText="Tipo Vehiculo">
                             <p:outputLabel value="Liviano/2 Ejes"/>
@@ -49,12 +53,13 @@
                         </p:column>
                         <p:column headerText="Monto Pagado">
                             <p:outputLabel value="340"/>
-                        </p:column>
+                        </p:column>-->
 
 
                     </p:dataTable>
 
-                    <p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update=":dlgDatos"/>
+
+                    <!--<p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update=":dlgDatos"/>-->
 
                 </h:form>
 

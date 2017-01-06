@@ -1,7 +1,6 @@
 package Datos;
 
 import Modelo.Persona;
-import static com.sun.jndi.toolkit.dir.SearchFilter.format;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

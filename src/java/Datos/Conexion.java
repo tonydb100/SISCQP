@@ -18,7 +18,7 @@ public class Conexion {
     
     public void Conectar() throws ClassNotFoundException, SQLException{
 //        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//        cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=pruebapf;user=sa;password=1630");
+//        cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=siscqp;user=sa;password=1630");
         
         Class.forName("com.mysql.jdbc.Driver");
         cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/siscqp?user=root&password=root");
