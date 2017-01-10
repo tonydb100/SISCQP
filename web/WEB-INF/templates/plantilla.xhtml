@@ -14,47 +14,50 @@
 
     <ui:insert name="top">
         
-        <div id="banner">
+        <div id="banner" class="ui-fluid">
             <ui:insert name="top">
                 <h:graphicImage library="images" name="banner_estudios.png"/>
             </ui:insert>
         </div>
 
 
-        <h:form>  
-            <p:growl id="messages"/>
-            <p:menubar id="menu">
-                <p:menuitem style="align-content: right" value="Pagina Principal" url="principal.xhtml"/>
+        <div class="ui-fluid">
+            <h:form>  
+                
+                <p:growl id="messages" showDetail="true"/>
+                <p:menubar id="menu">
+                    <p:menuitem style="align-content: right" value="Pagina Principal" url="principal.xhtml"/>
 
-                <p:menuitem value="Pagos" url="pago.xhtml" />
+                    <p:menuitem value="Pagos" url="pago.xhtml" />
 
-                <p:menuitem value="Usuarios" url="persona.xhtml" />
+                    <p:menuitem value="Usuarios" url="persona.xhtml" />
 
-                <p:menuitem value="Dispositivos" url="dispositivo.xhtml" />
+                    <p:menuitem value="Dispositivos" url="dispositivo.xhtml" />
 
-                <p:menuitem value="Reservas" url="reserva.xhtml" />
+                    <p:menuitem value="Reservas" url="reserva.xhtml" />
 
-                <p:menuitem value="Tarjetas" url="tarjeta.xhtml" />
+                    <p:menuitem value="Tarjetas" url="tarjeta.xhtml" />
 
-                <p:menuitem value="Reportes " url="reporte.xhtml" />
+                    <p:menuitem value="Reportes " url="reporte.xhtml" />
 
-                <f:facet name="options">
-                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-                </f:facet>
-            </p:menubar>
-        </h:form>       
+                    <f:facet name="options">
+                        <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                    </f:facet>
+                </p:menubar>
+            </h:form>       
+        </div>
 
     </ui:insert>
 
     <ui:insert name="content"></ui:insert>
 
     <ui:insert name="bottom" id="bottom">
-        <div id="footer">
+        <div id="footer" class="ui-fluid">
             <p id="text1" align="center">
-                Ministerio de Obras P&uacute;blicas y Transportes<br /> &copy;&nbsp;2016
+                Ministerio de Obras P&uacute;blicas y Transportes<br/> &copy;&nbsp;2016
+            </p> 
             <p id="text3" align="center">
                 Anthony Morales Salazar + Jorge Ribas Zabala
-            </p> 
             </p>
             <p:idleMonitor timeout="300000">
                 <p:ajax event="idle" listener="#{LoginB.llamarpaginaerror}"/>
@@ -63,23 +66,4 @@
 
     </ui:insert>
 
-    <!--
-    <h:body>
-
-            <ui:insert name="top">
-                <h:form>
-                    <p:menubar>
-                        <p:menuitem value="Ventas" url="venta.xhtml"/>
-                        <p:menuitem value="Personas" url="persona.xhtml"/>
-                        <p:menuitem value="Productos" url="producto.xhtml"/>
-                    </p:menubar>
-                </h:form>
-            </ui:insert>
-        
-            <ui:insert name="content"></ui:insert>
-            
-            <ui:insert name="bottom">www.MOPT.com</ui:insert>
-
-    </h:body>
-!-->
 </html>

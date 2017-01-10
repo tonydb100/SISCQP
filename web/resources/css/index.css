@@ -12,9 +12,12 @@
 
 #footer{
     position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    width: auto;
+    height: 120px;
+    align-self: center;
+    right: 7px;
+    bottom: 7px;
+    left: 7px;
     font-size: 16.5px;
     padding-top: .7em;
     padding-bottom: .7em;
