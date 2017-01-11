@@ -14,10 +14,13 @@
 
     <ui:insert name="top">
         
-        <div id="banner" class="ui-fluid">
-            <ui:insert name="top">
+        <div id="banner" class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-3">
                 <h:graphicImage library="images" name="banner_estudios.png"/>
-            </ui:insert>
+            </div>
+<!--            <ui:insert name="top">
+                <h:graphicImage library="images" name="banner_estudios.png"/>
+            </ui:insert>-->
         </div>
 
 
@@ -52,13 +55,15 @@
     <ui:insert name="content"></ui:insert>
 
     <ui:insert name="bottom" id="bottom">
-        <div id="footer" class="ui-fluid">
-            <p id="text1" align="center">
-                Ministerio de Obras P&uacute;blicas y Transportes<br/> &copy;&nbsp;2016
-            </p> 
-            <p id="text3" align="center">
-                Anthony Morales Salazar + Jorge Ribas Zabala
-            </p>
+        <div id="footer" class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                <p id="text1" align="center">
+                    Ministerio de Obras P&uacute;blicas y Transportes<br/> &copy;&nbsp;2016
+                </p> 
+                <p id="text3" align="center">
+                    Anthony Morales Salazar + Jorge Ribas Zabala
+                </p>
+            </div>
             <p:idleMonitor timeout="300000">
                 <p:ajax event="idle" listener="#{LoginB.llamarpaginaerror}"/>
             </p:idleMonitor>                 

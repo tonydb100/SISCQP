@@ -16,17 +16,17 @@
 
             <ui:define name="content">
 
-                <h:form style="margin-top: 1em" id="fm">
+                <h:form id="fm">
                     
                     <h3 align="center">Control de Circulación de Vehículos en Peajes Electrónicos</h3>
                     <p:panelGrid id="panelEncabezado" styleClass="ui-responsive">
                         
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="fechaIngreso" value="Fecha:" />
+                                <p:outputLabel for="fechaIngreso" value="Fecha:"/>
                             </p:column>
                             <p:column>
-                                <p:calendar id="fechaIngreso" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+                                <p:calendar id="fechaIngreso" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Dependencia: "/>
@@ -99,17 +99,17 @@
                                 <p:inputText value="#{manejadorPagos.peaje.monto}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Agregar" update="data"/>
+                                <p:commandButton value="Agregar" update="tablaIngresos"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>
-                        <!--<p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="data"/>-->
+                        <!--<p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>-->
                     
                     <h3>Listado</h3>
-                    <p:dataTable id="data" paginator="true" styleClass="ui-responsive" value="Persona" var="persona">
+                    <p:dataTable id="tablaIngresos" paginator="true" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
                  
                         <p:column headerText="Fecha Ingreso">
-                            <p:outputLabel value="MM/dd/yyyy HH:mm:ss"/>
+                            <p:outputLabel value="MM/dd/yyyy HH:mm:ss" style="center"/>
                         </p:column>
                         <p:column headerText="Dependencia">
                             <p:outputLabel value="Dependencia"/>
