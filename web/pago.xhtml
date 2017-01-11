@@ -18,51 +18,95 @@
 
                 <h:form style="margin-top: 1em" id="fm">
                     
-                    <h2 align="center">Control de Circulación de Vehículos en Peajes Electrónicos</h2>
-                    <p:panelGrid id="panelEncabezado" columns="6" styleClass="ui-responsive">
+                    <h3 align="center">Control de Circulación de Vehículos en Peajes Electrónicos</h3>
+                    <p:panelGrid id="panelEncabezado" styleClass="ui-responsive">
                         
-                        <p:outputLabel for="fechaIngreso" value="Fecha:" />
-                        <p:calendar id="fechaIngreso" style="margin-left: 1.9em" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
-                        <p:outputLabel value="Dependencia: "/>
-                        <p:inputText style="margin-left: 1.9em" value=""/>
-                        <p:outputLabel value="Operador: "/>
-                        <p:inputText style="margin-left: 1.9em" value=""/>
-                        <p:outputLabel value="Numero Dispositivo: "/>
-                        <p:inputText style="margin-left: 1.9em" value=""/>
-                        <p:outputLabel value="Numero Equipo: "/>
-                        <p:inputText style="margin-left: 1.9em" value=""/>
-                        <p:outputLabel value="Numero Placa: "/>
-                        <p:inputText style="margin-left: 1.9em" value=""/>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="fechaIngreso" value="Fecha:" />
+                            </p:column>
+                            <p:column>
+                                <p:calendar id="fechaIngreso" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Dependencia: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value=""/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Operador: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value=""/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Numero Dispositivo: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value=""/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Numero Equipo: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value=""/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Numero Placa: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value=""/>
+                            </p:column>
+                        </p:row>
                         
                     </p:panelGrid>
                     
-                    <h2>Ingresos</h2>
-                    <p:panelGrid id="panelIngresos" columns="9" styleClass="ui-responsive">
-                        
-                        <p:outputLabel for="fechaLinea" value="Fecha Ingreso:" />
-                        <p:calendar id="fechaLinea" style="margin-left: 1.9em" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
-                        
-                        <h:outputText value="Peaje: " />  
-                        <p:selectOneMenu value="#{manejadorPagos.peaje.nombre}" id="pea" style="margin-left: 1.9em">  
-                               <f:selectItem itemLabel="Nombre Peaje" itemValue=""/>
-                               <f:selectItems value="#{manejadorPagos.peaje.nombre}"/> 
-                               <p:ajax update="sent" />
-                        </p:selectOneMenu>
-                        <h:outputText value="Sentido: " />  
-                        <p:selectOneMenu value="#{manejadorPagos.peaje.sentido}" id="sent" style="margin-left: 1.9em"> 
-                                <f:selectItem itemLabel="Sentido" itemValue="" />
-                                <f:selectItems value="#{manejadorPagos.peaje.sentido}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="Monto: "/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPagos.peaje.monto}"/>
-                        
-                        <p:commandButton value="Agregar" style="margin-left: 1.9em" update="data"/>
-
+                    <h3>Ingresos</h3>
+                    <p:panelGrid id="panelIngresos" styleClass="ui-responsive">
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="fechaLinea" value="Fecha Ingreso:" />
+                            </p:column>
+                            <p:column>
+                                <p:calendar id="fechaLinea" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Peaje:"/>  
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{manejadorPagos.peaje.nombre}" id="pea">  
+                                       <f:selectItem itemLabel="Nombre Peaje" itemValue=""/>
+                                       <f:selectItems value="#{manejadorPagos.peaje.nombre}"/> 
+                                       <p:ajax update="sent" />
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Sentido:"/>  
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{manejadorPagos.peaje.sentido}" id="sent"> 
+                                        <f:selectItem itemLabel="Sentido" itemValue=""/>
+                                        <f:selectItems value="#{manejadorPagos.peaje.sentido}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Monto:"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{manejadorPagos.peaje.monto}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton value="Agregar" update="data"/>
+                            </p:column>
+                        </p:row>
                     </p:panelGrid>
                         <!--<p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="data"/>-->
                     
-                    <h2>Listado</h2>
-                    <p:dataTable id="data" reflow="true" paginator="true" styleClass="ui-responsive" value="Persona" var="persona">
+                    <h3>Listado</h3>
+                    <p:dataTable id="data" paginator="true" styleClass="ui-responsive" value="Persona" var="persona">
                  
                         <p:column headerText="Fecha Ingreso">
                             <p:outputLabel value="MM/dd/yyyy HH:mm:ss"/>
@@ -96,8 +140,6 @@
                         </p:column>
 
                     </p:dataTable>
-
-
                     <!--<p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update=":dlgDatos"/>-->
 
                 </h:form>
