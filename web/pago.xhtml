@@ -99,7 +99,7 @@
                                 <p:inputText value="#{manejadorPagos.peaje.monto}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Agregar" update="tablaIngresos"/>
+                                <p:commandButton value="Agregar" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>
