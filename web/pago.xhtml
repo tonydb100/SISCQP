@@ -106,10 +106,10 @@
                         <!--<p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>-->
                     
                     <h3>Listado</h3>
-                    <p:dataTable id="tablaIngresos" paginator="true" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="tablaIngresos" paginator="true" reflow="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
                  
                         <p:column headerText="Fecha Ingreso">
-                            <p:outputLabel value="MM/dd/yyyy HH:mm:ss" style="center"/>
+                            <p:outputLabel value="MM/dd/yyyy HH:mm:ss" />
                         </p:column>
                         <p:column headerText="Dependencia">
                             <p:outputLabel value="Dependencia"/>
