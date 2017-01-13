@@ -63,24 +63,24 @@ public class ManejadorPruebaIngreso {
         
     }
     
-    public void listar(String valor) throws Exception{
-        
-        DatoPersona dao;
-        
-        try {
-            if(valor.equals("F")){
-                if(isPostBack() == false){
-                    dao = new DatoPersona();
-                    lstPersona = dao.listar();
-                }
-            }else{
-                    dao = new DatoPersona();
-                    lstPersona = dao.listar();
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-        
-    }
+//    public void listar(String valor) throws Exception{
+//        
+//        DatoPersona dao;
+//        
+//        try {
+//            if(valor.equals("F")){
+//                if(isPostBack() == false){
+//                    dao = new DatoPersona();
+//                    lstPersona = dao.listar();
+//                }
+//            }else{
+//                    dao = new DatoPersona();
+//                    lstPersona = dao.listar();
+//            }
+//        } catch (Exception e) {
+//            throw e;
+//        }
+//        
+//    }
     
 }

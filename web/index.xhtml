@@ -8,13 +8,45 @@
 
     <h:head>
         <title>SISCQP</title>    
+        <h:outputStylesheet library="css" name="estiloInicioSesion.css"/>
     </h:head>
 
     <h:body>
 
-        <h:form>
-            <p:commandLink value="Entrar" action="principal?faces-redirect=true"/>
-        </h:form>
+        <ui:composition template="./WEB-INF/templates/plantillaInicio.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    
+                    <h3 align="center">Inicio de Sesión</h3>
+                    <p:panelGrid id="panelInicio" styleClass="ui-responsive">
+                        
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Usuario: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value=""/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Contraseña:"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText type="password" value=""/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column></p:column>
+                            <p:column>
+                                <p:button id="botonInicio" value="Iniciar Sesión" outcome="principal.xhtml"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    
+                </h:form>
+            </ui:define>
+        </ui:composition>
 
     </h:body>
 </html>
