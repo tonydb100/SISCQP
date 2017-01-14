@@ -17,10 +17,10 @@
             <ui:define name="content">
 
                 <h:form id="fm">
-                    
+
                     <h3 align="center">Control de Circulación de Vehículos en Peajes Electrónicos</h3>
                     <p:panelGrid id="panelEncabezado" styleClass="ui-responsive">
-                        
+
                         <p:row>
                             <p:column>
                                 <p:outputLabel for="fechaIngreso" value="Fecha:"/>
@@ -61,9 +61,9 @@
                                 <p:inputText value=""/>
                             </p:column>
                         </p:row>
-                        
+
                     </p:panelGrid>
-                    
+
                     <h3>Ingresos</h3>
                     <p:panelGrid id="panelIngresos" styleClass="ui-responsive">
                         <p:row>
@@ -78,9 +78,9 @@
                             </p:column>
                             <p:column>
                                 <p:selectOneMenu value="#{manejadorPagos.peaje.nombre}" id="pea">  
-                                       <f:selectItem itemLabel="Nombre Peaje" itemValue=""/>
-                                       <f:selectItems value="#{manejadorPagos.peaje.nombre}"/> 
-                                       <p:ajax update="sent" />
+                                    <f:selectItem itemLabel="Nombre Peaje" itemValue=""/>
+                                    <f:selectItems value="#{manejadorPagos.peaje.nombre}"/> 
+                                    <p:ajax update="sent" />
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>
@@ -88,8 +88,8 @@
                             </p:column>
                             <p:column>
                                 <p:selectOneMenu value="#{manejadorPagos.peaje.sentido}" id="sent"> 
-                                        <f:selectItem itemLabel="Sentido" itemValue=""/>
-                                        <f:selectItems value="#{manejadorPagos.peaje.sentido}"/>
+                                    <f:selectItem itemLabel="Sentido" itemValue=""/>
+                                    <f:selectItems value="#{manejadorPagos.peaje.sentido}"/>
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>
@@ -104,10 +104,10 @@
                         </p:row>
                     </p:panelGrid>
                         <!--<p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>-->
-                    
+
                     <h3>Listado</h3>
                     <p:dataTable id="tablaIngresos" paginator="true" reflow="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
-                 
+
                         <p:column headerText="Fecha Ingreso">
                             <p:outputLabel value="MM/dd/yyyy HH:mm:ss" />
                         </p:column>
