@@ -114,9 +114,9 @@ public class ManejadorPagos implements Serializable {
     }
     
     private void limpiar(){
-        this.ingreso.setIdPersona(0);
-        this.ingreso.setIdDispositivo(0);
-        this.ingreso.setIdPeaje(0);
+        this.ingreso.setIngreso_peaje("");
+        this.ingreso.setIngreso_sentido("");
+        this.ingreso.setIngreso_monto(0);
     }
     
     private void registrar() throws Exception{

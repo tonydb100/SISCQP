@@ -18,40 +18,88 @@
 
                 <h:form id="fm">
 
-                    <p:dataTable id="data" value="Persona" var="persona">
+                    <p:dataTable id="data" value="Persona" var="persona" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-top: 25px;">
+                        <f:facet name="{Exporters}">
+                            <div style="float:right">
+                                <h:commandLink>
+                                    <p:graphicImage name="/resources/images/excel_1.png" width="24"/>
+                                    <p:dataExporter type="xls" target="data" fileName="Personas" />
+                                </h:commandLink>
 
-                        <p:column headerText="idPersona">
-                            <p:outputLabel value="01"/>
+                                <h:commandLink>
+                                    <p:graphicImage name="/resources/images/pdf_1.png" width="24"/>
+                                    <p:dataExporter type="pdf" target="data" fileName="Personas"/>
+                                </h:commandLink>
+                            </div>
+                        </f:facet>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id" />
+                            </f:facet>
+                            <h:outputText value="Id" />
                         </p:column>
-                        <p:column headerText="Nombre">
-                            <p:outputLabel value="Anthony"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="Nombre" />
                         </p:column>
-                        <p:column headerText="Apellidos">
-                            <p:outputLabel value="Morales Salazar"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Apellidos"/>
+                            </f:facet>
+                            <h:outputText value="Apelidos" />
                         </p:column>
-                        <p:column headerText="Cedula">
-                            <p:outputLabel value="1-1654-1235"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cedula"/>
+                            </f:facet>
+                            <h:outputText value="Cedula" />
                         </p:column>
-                        <p:column headerText="Foto">
-                            <p:graphicImage library="images" name="tony.jpg"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Foto"/>
+                            </f:facet>
+                            <h:outputText value="Foto" />
+                            <!--<p:graphicImage library="images" name="tony.jpg"/>-->
                         </p:column>
-                        <p:column headerText="Rol">
-                            <p:outputLabel value="Administrador"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Rol"/>
+                            </f:facet>
+                            <h:outputText value="Rol" />
                         </p:column>
-                        <p:column headerText="Departamento">
-                            <p:outputLabel value="Gasolinas"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Departamento"/>
+                            </f:facet>
+                            <h:outputText value="Departamento" />
                         </p:column>
-                        <p:column headerText="Puesto">
-                            <p:outputLabel value="Conductor Sr."/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Puesto"/>
+                            </f:facet>
+                            <h:outputText value="Puesto" />
                         </p:column>
-                        <p:column headerText="Fecha Registro">
-                            <p:outputLabel value="15/06/1965"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha Registro"/>
+                            </f:facet>
+                            <h:outputText value="Fecha Registro" />
                         </p:column>
-                        <p:column headerText="Jefe Directo">
-                            <p:outputLabel value="Henry Salazar"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Jefe Directo"/>
+                            </f:facet>
+                            <h:outputText value="Jefe Directo" />
                         </p:column>
-                        <p:column headerText="Estado">
-                            <p:selectBooleanCheckbox value=""/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Estado"/>
+                            </f:facet>
+                            <h:outputText value="Estado" />
                         </p:column>
 
                     </p:dataTable>

@@ -2,18 +2,16 @@ package Manejador;
 
 import Modelo.Persona;
 import Datos.DatoPersona;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-
 public class ManejadorPersona {
 
     private Persona persona = new Persona();
