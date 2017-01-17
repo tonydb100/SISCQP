@@ -15,6 +15,11 @@
         <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
 
             <ui:define name="content">
+                
+                <f:event type="preRenderView" listener="#{manejadorTarjeta.listar('F')}"/>
+                <f:event type="preRenderView" listener="#{manejadorTarjeta.setAccion('Registrar')}"/>
+                <p:growl id="msj" autoUpdate="true" life="3000"/>
+                
                 <h:form styleClass="ui-responsive" style="margin-top: 1em" id="fm">
 
                     <center> <h3> Solicitud De Tarjeta Y Dispositivo Electrónico Al Banco De Costa Rica </h3> </center>
@@ -93,7 +98,7 @@
                                 <p:outputLabel value="Fecha:"/>
                             </p:column>
                             <p:column>
-                                <p:calendar value="#{manejadorTarjetas.date10}" pattern="MM/dd/yyyy HH:mm:ss" />                            </p:column>
+                                <p:calendar id="fecha" value="#{manejadorTarjeta.tarjeta.tarjeta_fecha}" pattern="MM/dd/yyyy HH:mm:ss"/>
                             <p:column>
                                 <p:outputLabel value="Código Programa del B.C.R.:"/>
                             </p:column>
