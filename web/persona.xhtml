@@ -20,9 +20,10 @@
                 <p:growl id="msj" autoUpdate="true"/>
         
                 <h:form id="fm">
-                    <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos"/>
+                    <h3 align="center">Mantenimiento de Usuarios</h3>
+                    <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos"/><br />
 
-                    <p:dataTable style="margin-top: 1em" id="data" value="#{manejadorPersona.lstPersona}" var="persona">
+                    <p:dataTable paginator="true" rows="5" styleClass="ui-responsive" id="data" value="#{manejadorPersona.lstPersona}" var="persona" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Cédula">
                             <p:outputLabel value="#{persona.cedula}"/>
@@ -52,7 +53,7 @@
                             <p:outputLabel value="#{persona.puesto}"/>
                         </p:column>
                         
-                        <p:column headerText="FechaReg">
+                        <p:column headerText="Fecha Registro">
                             <p:outputLabel value="#{persona.fechaRegisto}"/>
                         </p:column>
                         
@@ -79,39 +80,98 @@
 
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
-                        <p:outputLabel value="Cédula"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.cedula}"/><br/>
-                        
-                        <p:outputLabel value="Nombre"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.nombre}"/><br/>
-                        
-                        <p:outputLabel value="Apellidos"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.apellidos}"/><br/>
-                        
-                        <p:outputLabel value="Foto"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.foto}"/><br/>
-                        
-                        <p:outputLabel value="Rol"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.rol}"/><br/>
-                        
-                        <p:outputLabel value="Departamento"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.departamento}"/><br/>
-                        
-                        <p:outputLabel value="Puesto"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.puesto}"/><br/>
-                        
-                        <p:outputLabel value="Fecha Reg"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.fechaRegisto}"/><br/>
-                        
-                        <p:outputLabel value="Jefe Directo"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.jefeDirecto}"/><br/>
-                        
-                        <p:outputLabel value="Estado"/>
-                        <p:inputText style="margin-left: 1.9em" value="#{manejadorPersona.persona.estado}"/><br/>
-                        
-                        <p:commandButton value="#{manejadorPersona.accion}" actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
-                        <p:commandButton style="right: inherit" value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+                        <p:panelGrid id="pan" styleClass="ui-responsive">
 
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Cédula:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.cedula}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Nombre:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.nombre}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Apellidos:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.apellidos}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Foto:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.foto}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Rol:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.rol}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Departamento:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.departamento}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Puesto:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.puesto}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel for="fecha" value="Fecha Registro:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:calendar id="fecha" value="#{manejadorPersona.persona.fechaRegisto}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Jefe Directo:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.jefeDirecto}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Estado:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPersona.persona.estado}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:commandButton value="#{manejadorPersona.accion}" actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+                                </p:column>
+                            </p:row>
+                        
+                        </p:panelGrid>
                     </h:form>
                 </p:dialog>
 

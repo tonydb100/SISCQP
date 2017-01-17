@@ -38,14 +38,6 @@ public class ManejadorDispositivo implements Serializable {
         requestContext.update("form:display");
         requestContext.execute("PF('dlg').show()");
     }
-
-    public Date getDate10() {
-        return date10;
-    }
-
-    public void setDate10(Date date10) {
-        this.date10 = date10;
-    }
     
     public Dispositivo getDispositivo() {
         return dispositivo;
