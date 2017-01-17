@@ -1,23 +1,19 @@
 package Manejador;
 
-import Modelo.Persona;
-import Datos.DatoPersona;
-import java.io.Serializable;
-import javax.annotation.PostConstruct;
+import Datos.DatoIngreso;
+import Modelo.Ingreso;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-public class ManejadorPersona {
-
-    private Persona persona = new Persona();
-    private List<Persona> lstPersona;
+public class ManejadorIngreso {
+    
+    private Ingreso ingreso = new Ingreso();
+    private List<Ingreso> lstIngreso;
     private String accion;
-    private String fechaFinal;
 
     public String getAccion() {
         return accion;
@@ -28,20 +24,20 @@ public class ManejadorPersona {
         this.accion = accion;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Ingreso getIngreso() {
+        return ingreso;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setIngreso(Ingreso ingreso) {
+        this.ingreso = ingreso;
     }
 
-    public List<Persona> getLstPersona() {
-        return lstPersona;
+    public List<Ingreso> getLstIngreso() {
+        return lstIngreso;
     }
 
-    public void setLstPersona(List<Persona> lstPersona) {
-        this.lstPersona = lstPersona;
+    public void setLstIngreso(List<Ingreso> lstIngreso) {
+        this.lstIngreso = lstIngreso;
     }
 
     private boolean isPostBack(){
@@ -65,25 +61,16 @@ public class ManejadorPersona {
     }
     
     private void limpiar(){
-        this.persona.setCedula("");
-        this.persona.setNombre("");
-        this.persona.setApellidos("");
-        this.persona.setFoto("");
-        this.persona.setRol(0);
-        this.persona.setDepartamento("");
-        this.persona.setPuesto("");
-        this.persona.setFechaRegisto("");
-        this.persona.setJefeDirecto("");
-        this.persona.setEstado(1);
+        this.ingreso.setIngreso_monto(0);
     }
     
-    private void registrar() throws Exception{
+    public void registrar() throws Exception{
         
-        DatoPersona dao;
+        DatoIngreso dao;
         
         try {
-            dao = new DatoPersona();
-            dao.registrar(persona);
+            dao = new DatoIngreso();
+            dao.registrar(ingreso);
             this.listar("V");
             this.limpiar();
         } catch (Exception e) {
@@ -91,15 +78,14 @@ public class ManejadorPersona {
         }
     }
     
-    private void modificar() throws Exception{
+    public void modificar() throws Exception{
         
-        DatoPersona dao;
+        DatoIngreso dao;
         
         try {
-            dao = new DatoPersona();
-            dao.modificar(persona);
+            dao = new DatoIngreso();
+            dao.modificar(ingreso);
             this.listar("V");
-            this.limpiar();
         } catch (Exception e) {
             throw e;
         }
@@ -107,17 +93,17 @@ public class ManejadorPersona {
     
     public void listar(String valor) throws Exception{
         
-        DatoPersona dao;
+        DatoIngreso dao;
         
         try {
             if(valor.equals("F")){
                 if(isPostBack() == false){
-                    dao = new DatoPersona();
-                    lstPersona = dao.listar();
+                    dao = new DatoIngreso();
+                    lstIngreso = dao.listar();
                 }
             }else{
-                    dao = new DatoPersona();
-                    lstPersona = dao.listar();
+                    dao = new DatoIngreso();
+                    lstIngreso = dao.listar();
             }
         } catch (Exception e) {
             throw e;
@@ -125,18 +111,18 @@ public class ManejadorPersona {
         
     }
     
-    public void leerID(Persona per) throws Exception{
+    public void leerID(Ingreso per) throws Exception{
         
-        DatoPersona dao;
-        Persona temp;
+        DatoIngreso dao;
+        Ingreso temp;
         
         try {
-            dao = new DatoPersona();
+            dao = new DatoIngreso();
             temp = dao.leerID(per);
             
             if (temp != null) {
-                this.persona = temp;
-                this.accion = "Modificar";
+                this.ingreso = temp;
+                this.modificar();
             }
             
         } catch (Exception e) {
@@ -145,12 +131,12 @@ public class ManejadorPersona {
         
     }
     
-    public void eliminar(Persona per) throws Exception{
+    public void eliminar(Ingreso per) throws Exception{
         
-        DatoPersona dao;
+        DatoIngreso dao;
         
         try {
-            dao = new DatoPersona();
+            dao = new DatoIngreso();
             dao.eliminarID(per);
             this.listar("V");
         } catch (Exception e) {

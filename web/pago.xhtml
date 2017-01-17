@@ -16,6 +16,10 @@
 
             <ui:define name="content">
 
+                <f:event type="preRenderView" listener="#{manejadorIngreso.listar('F')}"/>
+                <f:event type="preRenderView" listener="#{manejadorIngreso.setAccion('Registrar')}"/>
+                <p:growl id="msj" autoUpdate="true" life="3000"/>
+                
                 <h:form id="fm">
 
                     <h3 align="center">Control de Circulación de Vehículos en Peajes Electrónicos</h3>
@@ -23,22 +27,22 @@
 
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="fechaIngreso" value="Fecha:"/>
+                                <p:outputLabel for="fecha" value="Fecha:"/>
                             </p:column>
                             <p:column>
-                                <p:calendar id="fechaIngreso" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                                <p:calendar id="fecha" value="#{manejadorIngreso.ingreso.ingreso_fecha}" pattern="MM/dd/yyyy HH:mm:ss"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Dependencia: "/>
                             </p:column>
                             <p:column>
-                                <p:inputText value=""/>
+                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_dependencia}" required="true" requiredMessage="Ingrese Dependencia"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Operador: "/>
                             </p:column>
                             <p:column>
-                                <p:inputText value=""/>
+                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_operador}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -46,19 +50,19 @@
                                 <p:outputLabel value="Numero Dispositivo: "/>
                             </p:column>
                             <p:column>
-                                <p:inputText value=""/>
+                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_dispositivo}"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Numero Equipo: "/>
                             </p:column>
                             <p:column>
-                                <p:inputText value=""/>
+                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_equipo}"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Numero Placa: "/>
                             </p:column>
                             <p:column>
-                                <p:inputText value=""/>
+                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_placa}"/>
                             </p:column>
                         </p:row>
 
@@ -68,18 +72,18 @@
                     <p:panelGrid id="panelIngresos" styleClass="ui-responsive">
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="fechaLinea" value="Fecha Ingreso:" />
+                                <p:outputLabel for="fechaIngreso" value="Fecha Ingreso:" />
                             </p:column>
                             <p:column>
-                                <p:calendar id="fechaLinea" value="#{manejadorPagos.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+                                <p:calendar id="fechaIngreso" value="#{manejadorIngreso.ingreso.ingreso_fechaIngreso}" pattern="MM/dd/yyyy HH:mm:ss" />
                             </p:column>
                             <p:column>
                                 <h:outputText value="Peaje:"/>  
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{manejadorPagos.peaje.nombre}" id="pea">  
+                                <p:selectOneMenu value="#{manejadorIngreso.ingreso.ingreso_peaje}" id="pea">  
                                     <f:selectItem itemLabel="Nombre Peaje" itemValue=""/>
-                                    <f:selectItems value="#{manejadorPagos.peaje.nombre}"/> 
+                                    <f:selectItems value="#{manejadorIngreso.ingreso.ingreso_peaje}"/> 
                                     <p:ajax update="sent" />
                                 </p:selectOneMenu>
                             </p:column>
@@ -87,62 +91,163 @@
                                 <h:outputText value="Sentido:"/>  
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{manejadorPagos.peaje.sentido}" id="sent"> 
+                                <p:selectOneMenu value="#{manejadorIngreso.ingreso.ingreso_sentido}" id="sent"> 
                                     <f:selectItem itemLabel="Sentido" itemValue=""/>
-                                    <f:selectItems value="#{manejadorPagos.peaje.sentido}"/>
+                                    <f:selectItems value="#{manejadorIngreso.ingreso.ingreso_sentido}"/>
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Monto:"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{manejadorPagos.peaje.monto}"/>
+                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_monto}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Agregar" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>
+                                <p:commandButton value="Registrar" actionListener="#{manejadorIngreso.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>
-                        <!--<p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>-->
 
                     <h3>Listado</h3>
-                    <p:dataTable id="tablaIngresos" paginator="true" reflow="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorIngreso.lstIngreso}" var="ingreso" emptyMessage="Sin registros para mostrar">
 
-                        <p:column headerText="Fecha Ingreso">
-                            <p:outputLabel value="MM/dd/yyyy HH:mm:ss" />
+                        <p:column headerText="Fecha">
+                            <p:outputLabel value="#{ingreso.ingreso_fechaIngreso}"/>
                         </p:column>
                         <p:column headerText="Dependencia">
-                            <p:outputLabel value="Dependencia"/>
+                            <p:outputLabel value="#{ingreso.ingreso_dependencia}"/>
                         </p:column>
                         <p:column headerText="Operador">
-                            <p:outputLabel value="Operador"/>
+                            <p:outputLabel value="#{ingreso.ingreso_operador}"/>
                         </p:column>
-                        <p:column headerText="Numero Dispositivo">
-                            <p:outputLabel value="Numero Dispositivo"/>
+                        <p:column headerText="Dispositivo">
+                            <p:outputLabel value="#{ingreso.ingreso_dispositivo}"/>
                         </p:column>
-                        <p:column headerText="Numero Equipo">
-                            <p:outputLabel value="Numero Equipo"/>
+                        <p:column headerText="Equipo">
+                            <p:outputLabel value="#{ingreso.ingreso_dispositivo}"/>
                         </p:column>
-                        <p:column headerText="Numero Placa">
-                            <p:outputLabel value="Numero Placa"/>
+                        <p:column headerText="Placa">
+                            <p:outputLabel value="#{ingreso.ingreso_placa}"/>
                         </p:column>
-                        <p:column headerText="Fecha">
-                            <p:outputLabel value="MM/dd/yyyy HH:mm:ss"/>
+                        <p:column headerText="Fecha Ingreso">
+                            <p:outputLabel value="#{ingreso.ingreso_fecha}"/>
                         </p:column>
                         <p:column headerText="Peaje">
-                            <p:outputLabel value="Escazu"/>
+                            <p:outputLabel value="#{ingreso.ingreso_peaje}"/>
                         </p:column>
                         <p:column headerText="Sentido">
-                            <p:outputLabel value="San Jose-Escazu"/>
+                            <p:outputLabel value="#{ingreso.ingreso_sentido}"/>
                         </p:column>
                         <p:column headerText="Monto">
-                            <p:outputLabel value="350"/>
+                            <p:outputLabel value="#{ingreso.ingreso_monto}"/>
+                        </p:column>
+                        <p:column headerText="Modificar">
+                            <p:commandLink value="Modificar" actionListener="#{manejadorIngreso.leerID(ingreso)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
+                        </p:column>
+
+                        <p:column headerText="Eliminar">
+                            <p:commandLink value="Eliminar" actionListener="#{manejadorIngreso.eliminar(ingreso)}" update="tablaIngresos"/>
                         </p:column>
 
                     </p:dataTable>
-                    <!--<p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update=":dlgDatos"/>-->
-
+                    
                 </h:form>
+                
+                <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
+                    <h:form>
+                        <p:panelGrid>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel for="dlgFecha" value="Fecha:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:calendar id="dlgFecha" value="#{manejadorIngreso.ingreso.ingreso_fecha}" pattern="MM/dd/yyyy HH:mm:ss" />
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Dependencia:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_dependencia}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Operador:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_operador}"/>                                  
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Dispositivo:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_dispositivo}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Equipo:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_equipo}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Placa:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_placa}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel for="dlgFechaIngreso" value="Fecha Ingreso:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:calendar id="dlgFechaIngreso" value="#{manejadorIngreso.ingreso.ingreso_fechaIngreso}" pattern="MM/dd/yyyy HH:mm:ss" />
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Peaje:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_peaje}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Sentido:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_sentido}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Monto:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorIngreso.ingreso.ingreso_monto}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:commandButton value="#{manejadorIngreso.accion}" actionListener="#{manejadorIngreso.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:tablaIngresos"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+
+                    </h:form>
+                </p:dialog>
 
             </ui:define>
         </ui:composition>

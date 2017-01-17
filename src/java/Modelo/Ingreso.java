@@ -37,7 +37,7 @@ public class Ingreso {
     }
 
     public void setIngreso_dependencia(String ingreso_dependencia) {
-        this.ingreso_dependencia = ingreso_dependencia;
+        this.ingreso_dependencia = ingreso_dependencia.toUpperCase();
     }
 
     public String getIngreso_operador() {
@@ -45,7 +45,7 @@ public class Ingreso {
     }
 
     public void setIngreso_operador(String ingreso_operador) {
-        this.ingreso_operador = ingreso_operador;
+        this.ingreso_operador = ingreso_operador.toUpperCase();
     }
 
     public String getIngreso_dispositivo() {
@@ -53,7 +53,7 @@ public class Ingreso {
     }
 
     public void setIngreso_dispositivo(String ingreso_dispositivo) {
-        this.ingreso_dispositivo = ingreso_dispositivo;
+        this.ingreso_dispositivo = ingreso_dispositivo.toUpperCase();
     }
 
     public String getIngreso_equipo() {
@@ -61,7 +61,7 @@ public class Ingreso {
     }
 
     public void setIngreso_equipo(String ingreso_equipo) {
-        this.ingreso_equipo = ingreso_equipo;
+        this.ingreso_equipo = ingreso_equipo.toUpperCase();
     }
 
     public String getIngreso_placa() {
@@ -69,7 +69,7 @@ public class Ingreso {
     }
 
     public void setIngreso_placa(String ingreso_placa) {
-        this.ingreso_placa = ingreso_placa;
+        this.ingreso_placa = ingreso_placa.toUpperCase();
     }
 
     public Date getIngreso_fechaIngreso() {
@@ -85,7 +85,7 @@ public class Ingreso {
     }
 
     public void setIngreso_peaje(String ingreso_peaje) {
-        this.ingreso_peaje = ingreso_peaje;
+        this.ingreso_peaje = ingreso_peaje.toUpperCase();
     }
 
     public String getIngreso_sentido() {
@@ -93,7 +93,7 @@ public class Ingreso {
     }
 
     public void setIngreso_sentido(String ingreso_sentido) {
-        this.ingreso_sentido = ingreso_sentido;
+        this.ingreso_sentido = ingreso_sentido.toUpperCase();
     }
 
     public int getIngreso_monto() {

@@ -104,11 +104,11 @@
 
                     </p:dataTable>
 
-                    <p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update=":dlgDatos"/>
+                    <!--<p:commandButton value="Registrar Nuevo" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update=":dlgDatos"/>-->
 
                 </h:form>
 
-                <p:dialog header="Registro de Pago" widgetVar="wdlgDatos" id="dlgDatos">
+<!--                <p:dialog header="Registro de Pago" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
 
                         <p:outputLabel value="Nombre"/>
@@ -135,16 +135,16 @@
                         <p:outputLabel value="Jefe Directo"/>
                         <p:inputText style="margin-left: 1.9em" value="#{personaBean.persona.nombre}"/>
                         <br/>
-                        <!-- 
+                         
                             idPersona       = AutoIncrement
                             Estado          = Automaticamente ACTIVO
                             FechaRegistro   = Sys.Date, insertada automaticamente por el sistema
-                        !-->
+                        !
                         <p:commandButton value="Registrar" actionListener="#{personaBean.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
                         <p:commandButton style="right: inherit" value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
 
                     </h:form>
-                </p:dialog>
+                </p:dialog>-->
 
             </ui:define>
 
