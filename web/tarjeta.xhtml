@@ -156,7 +156,7 @@
 
 
                     <h3>Listado</h3>
-                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorIngreso.lstIngreso}" var="tarjeta" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Nombre Dependencia Solicitante">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_dependencia}" />

@@ -64,12 +64,12 @@ public class ManejadorDispositivo implements Serializable {
         this.accion = accion;
     }
 
-    public List<Dispositivo> getLstIngreso() {
+    public List<Dispositivo> getLstDispositivo() {
         return lstDispositivo;
     }
 
-    public void setLstIngreso(List<Dispositivo> lstIngreso) {
-        this.lstDispositivo = lstIngreso;
+    public void setLstDispositivo(List<Dispositivo> lstDispositivo) {
+        this.lstDispositivo = lstDispositivo;
     }
     
     private boolean isPostBack(){

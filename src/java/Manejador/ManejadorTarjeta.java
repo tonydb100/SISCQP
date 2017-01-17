@@ -68,8 +68,8 @@ public class ManejadorTarjeta implements Serializable {
         return lstTarjeta;
     }
 
-    public void setLstIngreso(List<Tarjeta> lstIngreso) {
-        this.lstTarjeta = lstIngreso;
+    public void setlstTarjeta(List<Tarjeta> lstTarjeta) {
+        this.lstTarjeta = lstTarjeta;
     }
     
     private boolean isPostBack(){

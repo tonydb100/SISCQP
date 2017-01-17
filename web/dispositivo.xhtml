@@ -92,7 +92,7 @@
                     </p:panelGrid>
 
                     <h3>Listado</h3>
-                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorDispositivo.}" var="dispositivo" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Reserva de Recurso">
                             <p:outputLabel value="#{dispositivo.dispositivo_reserva}" />
