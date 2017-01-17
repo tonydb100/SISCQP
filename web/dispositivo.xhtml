@@ -9,7 +9,7 @@
     <h:head>
         <title>Registro de Rutas</title>
     </h:head>
-    
+
     <body>
 
         <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
@@ -82,7 +82,7 @@
                         </p:column>
                     </p:row>
                 </p:panelGrid>
-                    <!--<p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>-->
+<!--                <p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>-->
 
                 <h3>Listado</h3>
                 <p:dataTable id="tablaIngresos" paginator="true" reflow="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
@@ -108,7 +108,7 @@
                     <p:column headerText="Monto de Facturas ₡">
                         <p:outputLabel value="970"/>
                     </p:column>
-                    
+
 
                 </p:dataTable>
 
