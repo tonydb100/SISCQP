@@ -72,31 +72,6 @@ public class ManejadorTarjeta implements Serializable {
         this.lstTarjeta = lstIngreso;
     }
     
-    
-    public void NombreOperador(){
-        DatoTarjeta dao = new DatoTarjeta();
-//        dao.();
-    }
-    
-    public void CedulaOperador(){
-        DatoTarjeta dao = new DatoTarjeta();
-//        dao.();
-    }
-    
-    @SuppressWarnings("unchecked")
-    public void NumeroEquipo(){
-        DatoTarjeta dao = new DatoTarjeta();
-//        dao.();
-    }
-    
-    @SuppressWarnings("unchecked")
-    public void NumeroPlaca(){
-        DatoTarjeta dao = new DatoTarjeta();
-//        dao.();
-    }
-    
-    
-
     private boolean isPostBack(){
         boolean res;
         res = FacesContext.getCurrentInstance().isPostback();

@@ -72,31 +72,6 @@ public class ManejadorDispositivo implements Serializable {
         this.lstDispositivo = lstIngreso;
     }
     
-    
-    public void NombreOperador(){
-        DatoDispositivo dao = new DatoDispositivo();
-//        dao.();
-    }
-    
-    public void CedulaOperador(){
-        DatoDispositivo dao = new DatoDispositivo();
-//        dao.();
-    }
-    
-    @SuppressWarnings("unchecked")
-    public void NumeroEquipo(){
-        DatoDispositivo dao = new DatoDispositivo();
-//        dao.();
-    }
-    
-    @SuppressWarnings("unchecked")
-    public void NumeroPlaca(){
-        DatoDispositivo dao = new DatoDispositivo();
-//        dao.();
-    }
-    
-    
-
     private boolean isPostBack(){
         boolean res;
         res = FacesContext.getCurrentInstance().isPostback();
