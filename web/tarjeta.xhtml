@@ -30,13 +30,13 @@
                                 <p:outputLabel value="Nombre Dependencia Solicitante:"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_dependencia}"/>
+                                <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_dependencia}" required="true" requiredMessage="Ingrese Nombre de la Dependencia"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Ejecutor(a) Responsable:"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_ejecutor}"/>
+                                <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_ejecutor}" required="true" requiredMessage="Ingrese Ejecutor(a) Responsble"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Programa:"/>
@@ -149,7 +149,7 @@
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Agregar" oncomplete="PF('wdlgDatos').show();" update="panelIngresos"/>
+                                <p:commandButton value="Agregar" actionListener="#{manejadorTarjeta.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>

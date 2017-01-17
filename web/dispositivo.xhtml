@@ -30,19 +30,19 @@
                                 <p:outputLabel value="Reserva de Recurso:"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_reserva}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_reserva}" required="true" requiredMessage="Ingrese Reserva del Recurso"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Registro Contable: "/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_registroContable}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_registroContable}" required="true" requiredMessage="Ingrese Registro Contable"/>
                             </p:column>
                             <p:column>
-                                <p:outputLabel value="Código Programa del B.C.R. "/>
+                                <p:outputLabel value="Código Programa del B.C.R."/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_programaBCR}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_programaBCR}" required="true" requiredMessage="Ingrese Código Programa del B.C.R."/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>
@@ -86,11 +86,10 @@
                                 <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_montoFacturas}" required="true" requiredMessage="Ingrese Dependencia"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Agregar" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>
+                                <p:commandButton value="Agregar" actionListener="#{manejadorDispositivo.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>
-    <!--                <p:commandButton value="Agregar" style="margin-left: 1.9em" oncomplete="PF('wdlgDatos').show();" actionListener="#{personaBean.setAccion('Registrar')}" update="tablaIngresos"/>-->
 
                     <h3>Listado</h3>
                     <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
