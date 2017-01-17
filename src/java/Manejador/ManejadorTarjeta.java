@@ -64,7 +64,7 @@ public class ManejadorTarjeta implements Serializable {
         this.accion = accion;
     }
 
-    public List<Tarjeta> getLstIngreso() {
+    public List<Tarjeta> getLstTarjeta() {
         return lstTarjeta;
     }
 

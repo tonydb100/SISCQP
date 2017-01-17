@@ -19,7 +19,7 @@
                 <f:event type="preRenderView" listener="#{manejadorIngreso.listar('F')}"/>
                 <f:event type="preRenderView" listener="#{manejadorIngreso.setAccion('Registrar')}"/>
                 <p:growl id="msj" autoUpdate="true" life="3000"/>
-                
+
                 <h:form id="fm">
 
                     <h3 align="center">Control de Circulación de Vehículos en Peajes Electrónicos</h3>
@@ -106,6 +106,8 @@
                                 <p:commandButton value="Registrar" actionListener="#{manejadorIngreso.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
                             </p:column>
                         </p:row>
+                        <p:commandButton value="Registrar" actionListener="#{manejadorIngreso.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
+
                     </p:panelGrid>
 
                     <h3>Listado</h3>
@@ -150,9 +152,9 @@
                         </p:column>
 
                     </p:dataTable>
-                    
+
                 </h:form>
-                
+
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
                         <p:panelGrid>
