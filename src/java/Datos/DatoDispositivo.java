@@ -95,29 +95,29 @@ public class DatoDispositivo extends Conexion {
         return montoFactura;
     }
 
-    public void registrar(Ingreso per) throws Exception {
-
-        try {
-            this.Conectar();
-//        per.setFechaRegisto(this.obtenerHora());
-
-
-//  NO ME QUEDA CLARO QUE PONER AQUII
-
-
-            PreparedStatement st = this.getCn().prepareStatement("INSERT INTO ingreso (ingreso_idPersona, ingreso_idDispositivo, ingreso_idPeaje, ingreso_fecha) "
-                    + "values (?,?,?,?)");
-            st.setInt(1, per.getIdPersona());
-            st.setInt(2, per.getIdDispositivo());
-            st.setInt(3, per.getIdPeaje());
-            st.setDate(4, (java.sql.Date) (Date) per.getFecha());
-            st.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-    }
+//    public void registrar(Ingreso per) throws Exception {
+//
+//        try {
+//            this.Conectar();
+////        per.setFechaRegisto(this.obtenerHora());
+//
+//
+////  NO ME QUEDA CLARO QUE PONER AQUII
+//
+//
+//            PreparedStatement st = this.getCn().prepareStatement("INSERT INTO ingreso (ingreso_idPersona, ingreso_idDispositivo, ingreso_idPeaje, ingreso_fecha) "
+//                    + "values (?,?,?,?)");
+//            st.setInt(1, per.getIdPersona());
+//            st.setInt(2, per.getIdDispositivo());
+//            st.setInt(3, per.getIdPeaje());
+//            st.setDate(4, (java.sql.Date) (Date) per.getFecha());
+//            st.executeUpdate();
+//        } catch (ClassNotFoundException | SQLException e) {
+//            throw e;
+//        } finally {
+//            this.cerrar();
+//        }
+//    }
 
 //    public String obtenerHora(){
 //        
@@ -128,89 +128,89 @@ public class DatoDispositivo extends Conexion {
 //        
 //        return fechaFinal;
 //    }
-    public List<Ingreso> listar() throws Exception {
-
-        List<Ingreso> lista;
-        ResultSet rs;
-
-        try {
-            this.Conectar();
-            PreparedStatement st = this.getCn().prepareStatement("SELECT * FROM ingreso");
-            rs = st.executeQuery();
-            lista = new ArrayList();
-
-            while (rs.next()) {
-                Ingreso per = new Ingreso();
-                per.setIdPersona(rs.getInt("ingreso_idPersona"));
-                per.setIdDispositivo(rs.getInt("ingreso_idDispositivo"));
-                per.setIdPeaje(rs.getInt("ingreso_idPeaje"));
-                per.setFecha(rs.getDate("ingreso_fecha"));
-                lista.add(per);
-            }
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-        return lista;
-    }
-
-    public Ingreso leerID(Ingreso per) throws Exception {
-
-        Ingreso pers = null;
-        ResultSet rs;
-        try {
-            this.Conectar();
-            PreparedStatement st = this.getCn().prepareStatement("SELECT * FROM ingreso WHERE ingreso_id = ?");
-            st.setInt(1, per.getIdIngresos());
-            rs = st.executeQuery();
-
-            while (rs.next()) {
-                pers = new Ingreso();
-                pers.setIdIngresos(rs.getInt("ingreso_id"));
-                pers.setIdPersona(rs.getInt("ingreso_idPersona"));
-                pers.setIdDispositivo(rs.getInt("ingreso_idDispositivo"));
-                pers.setIdPeaje(rs.getInt("ingreso_idPeaje"));
-                pers.setFecha(rs.getDate("ingreso_fecha"));
-            }
-
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-
-        return pers;
-    }
-
-    public void modificar(Ingreso per) throws Exception {
-        try {
-            this.Conectar();
-            PreparedStatement st = this.getCn().prepareStatement("UPDATE ingreso SET ingreso_idPersona = ?, ingreso_idDispositivo = ?, ingreso_idPeaje = ?, ingreso_fecha = ? "
-                    + "                                             WHERE ingreso_id = ?");
-            st.setInt(1, per.getIdPersona());
-            st.setInt(2, per.getIdDispositivo());
-            st.setInt(3, per.getIdPeaje());
-            st.setDate(4, (java.sql.Date) per.getFecha());
-            st.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-    }
-
-    public void eliminarID(Ingreso per) throws Exception {
-        try {
-            this.Conectar();
-            PreparedStatement st = this.getCn().prepareStatement("DELETE FROM ingreso WHERE ingreso_id = ?");
-            st.setInt(1, per.getIdIngresos());
-            st.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-    }
+//    public List<Ingreso> listar() throws Exception {
+//
+//        List<Ingreso> lista;
+//        ResultSet rs;
+//
+//        try {
+//            this.Conectar();
+//            PreparedStatement st = this.getCn().prepareStatement("SELECT * FROM ingreso");
+//            rs = st.executeQuery();
+//            lista = new ArrayList();
+//
+//            while (rs.next()) {
+//                Ingreso per = new Ingreso();
+//                per.setIdPersona(rs.getInt("ingreso_idPersona"));
+//                per.setIdDispositivo(rs.getInt("ingreso_idDispositivo"));
+//                per.setIdPeaje(rs.getInt("ingreso_idPeaje"));
+//                per.setFecha(rs.getDate("ingreso_fecha"));
+//                lista.add(per);
+//            }
+//        } catch (Exception e) {
+//            throw e;
+//        } finally {
+//            this.cerrar();
+//        }
+//        return lista;
+//    }
+//
+//    public Ingreso leerID(Ingreso per) throws Exception {
+//
+//        Ingreso pers = null;
+//        ResultSet rs;
+//        try {
+//            this.Conectar();
+//            PreparedStatement st = this.getCn().prepareStatement("SELECT * FROM ingreso WHERE ingreso_id = ?");
+//            st.setInt(1, per.getIdIngresos());
+//            rs = st.executeQuery();
+//
+//            while (rs.next()) {
+//                pers = new Ingreso();
+//                pers.setIdIngresos(rs.getInt("ingreso_id"));
+//                pers.setIdPersona(rs.getInt("ingreso_idPersona"));
+//                pers.setIdDispositivo(rs.getInt("ingreso_idDispositivo"));
+//                pers.setIdPeaje(rs.getInt("ingreso_idPeaje"));
+//                pers.setFecha(rs.getDate("ingreso_fecha"));
+//            }
+//
+//        } catch (Exception e) {
+//            throw e;
+//        } finally {
+//            this.cerrar();
+//        }
+//
+//        return pers;
+//    }
+//
+//    public void modificar(Ingreso per) throws Exception {
+//        try {
+//            this.Conectar();
+//            PreparedStatement st = this.getCn().prepareStatement("UPDATE ingreso SET ingreso_idPersona = ?, ingreso_idDispositivo = ?, ingreso_idPeaje = ?, ingreso_fecha = ? "
+//                    + "                                             WHERE ingreso_id = ?");
+//            st.setInt(1, per.getIdPersona());
+//            st.setInt(2, per.getIdDispositivo());
+//            st.setInt(3, per.getIdPeaje());
+//            st.setDate(4, (java.sql.Date) per.getFecha());
+//            st.executeUpdate();
+//        } catch (ClassNotFoundException | SQLException e) {
+//            throw e;
+//        } finally {
+//            this.cerrar();
+//        }
+//    }
+//
+//    public void eliminarID(Ingreso per) throws Exception {
+//        try {
+//            this.Conectar();
+//            PreparedStatement st = this.getCn().prepareStatement("DELETE FROM ingreso WHERE ingreso_id = ?");
+//            st.setInt(1, per.getIdIngresos());
+//            st.executeUpdate();
+//        } catch (ClassNotFoundException | SQLException e) {
+//            throw e;
+//        } finally {
+//            this.cerrar();
+//        }
+//    }
 
 }
