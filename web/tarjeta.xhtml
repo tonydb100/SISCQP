@@ -15,8 +15,7 @@
         <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
 
             <ui:define name="content">
-
-                <h:form style="margin-top: 1em" id="fm">
+                <h:form styleClass="ui-responsive" style="margin-top: 1em" id="fm">
 
                     <center> <h3> Solicitud De Tarjeta Y Dispositivo Electrónico Al Banco De Costa Rica </h3> </center>
                     <p:panelGrid id="panelEncabezado" styleClass="ui-responsive">
@@ -147,55 +146,67 @@
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>
-                                <!--                                <p:commandButton value="Agregar" oncomplete="PF('wdlgDatos').show();" update="tablaIngresos"/>-->
+                                <p:commandButton value="Agregar" oncomplete="PF('wdlgDatos').show();" update="panelIngresos"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>
 
+
+                    <h3>Listado</h3>
+                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
+
+                        <p:column headerText="Nombre Dependencia Solicitante">
+                            <p:outputLabel value="Nombre" />
+                        </p:column>
+                        <p:column headerText="Nombre del Encargado de la Tarjeta">
+                            <p:outputLabel value="Nombre" />
+                        </p:column>
+                        <p:column headerText="Cédula de Identitad">
+                            <p:outputLabel value="Cédula" />
+                        </p:column>
+                        <p:column headerText="Correo Electronico:">
+                            <p:outputLabel value="E-mail" />
+                        </p:column>
+                        <p:column headerText="Domicilio del Encargado de la Tarjeta">
+                            <p:outputLabel value="Domicilio" />
+                        </p:column>
+                        <p:column headerText="Ejecutor(a) Responsable">
+                            <p:outputLabel value="Ejecutor(a)" />
+                        </p:column>
+                        <p:column headerText="Programa">
+                            <p:outputLabel value="Programa" />
+                        </p:column>
+                        <p:column headerText="Subprograma">
+                            <p:outputLabel value="Subprograma" />
+                        </p:column>
+                        <p:column headerText="Área Actividad">
+                            <p:outputLabel value="Área Actividad" />
+                        </p:column>
+                        <p:column headerText="Número de Oficina">
+                            <p:outputLabel value="Telefono" />
+                        </p:column>
+                        <p:column headerText="Código Programa del B.C.R">
+                            <p:outputLabel value="Código" />
+                        </p:column>
+                        <p:column headerText="Fecha">
+                            <p:outputLabel value="Fecha" />
+                        </p:column>
+                        <p:column headerText="Nombre de los Operadores">
+                            <p:outputLabel value="Nombre" />
+                        </p:column>
+                        <p:column headerText="Cedula de Identidad">
+                            <p:outputLabel value="Cedula" />
+                        </p:column>
+                        <p:column headerText="N° Equipo">
+                            <p:outputLabel value="N°" />
+                        </p:column>
+                        <p:column headerText="N° Placa">
+                            <p:outputLabel value="N°" />
+                        </p:column>
+
+
+                    </p:dataTable>
                 </h:form>
-
-                <h3>Listado</h3>
-                <p:dataTable id="tablaIngresos" paginator="true" reflow="true" rows="5" styleClass="ui-responsive" value="Persona" var="persona" emptyMessage="Sin registros para mostrar">
-
-                    <p:column headerText="Nombre Dependencia Solicitante">
-                        <p:outputLabel value="Nombre" />
-                    </p:column>
-                    <p:column headerText="Nombre del Encargado de la Tarjeta">
-                        <p:outputLabel value="Nombre" />
-                    </p:column>
-                    <p:column headerText="Cédula de Identitad">
-                        <p:outputLabel value="Cédula" />
-                    </p:column>
-                    <p:column headerText="Correo Electronico:">
-                        <p:outputLabel value="E-mail" />
-                    </p:column>
-                    <p:column headerText="Domicilio del Encargado de la Tarjeta">
-                        <p:outputLabel value="Domicilio" />
-                    </p:column>
-                    <p:column headerText="Ejecutor(a) Responsable">
-                        <p:outputLabel value="Ejecutor(a)" />
-                    </p:column>
-                    <p:column headerText="Programa">
-                        <p:outputLabel value="Programa" />
-                    </p:column>
-                    <p:column headerText="Subprograma">
-                        <p:outputLabel value="Subprograma" />
-                    </p:column>
-                    <p:column headerText="Área Actividad">
-                        <p:outputLabel value="Área Actividad" />
-                    </p:column>
-                    <p:column headerText="Número de Oficina">
-                        <p:outputLabel value="Telefono" />
-                    </p:column>
-                    <p:column headerText="Código Programa del B.C.R">
-                        <p:outputLabel value="Código" />
-                    </p:column>
-                    <p:column headerText="Fecha">
-                        <p:outputLabel value="Nombre" />
-                    </p:column>
-                    
-
-                </p:dataTable>
 
 
             </ui:define>
