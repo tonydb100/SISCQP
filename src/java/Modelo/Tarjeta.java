@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Tarjeta {
 
-    private int     tarjeta_id;
+    private int    tarjeta_id;
     private String tarjeta_dependencia;
     private String tarjeta_ejecutor;
     private String tarjeta_programa;
@@ -15,7 +15,7 @@ public class Tarjeta {
     private String tarjeta_correoElectronico;
     private String tarjeta_numeroOficina;
     private String tarjeta_domicilioEncargadoTarjeta;
-    private Date tarjeta_fecha;
+    private Date   tarjeta_fecha = new Date();
     private String tarjeta_codigoBCR;
     private String tarjeta_operador;
     private String tarjeta_cedulaOperador;
@@ -111,7 +111,8 @@ public class Tarjeta {
     }
 
     public Date getTarjeta_fecha() {
-        return tarjeta_fecha;
+        java.sql.Date sqlDate = new java.sql.Date(tarjeta_fecha.getTime());
+        return sqlDate;
     }
 
     public void setTarjeta_fecha(Date tarjeta_fecha) {

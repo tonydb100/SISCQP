@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class Ingreso {
 
-    private int ingreso_id;
-    private Date ingreso_fecha;
+    private int    ingreso_id;
+    private Date   ingreso_fecha = new Date();
     private String ingreso_dependencia;
     private String ingreso_operador;
     private String ingreso_dispositivo;
     private String ingreso_equipo;
     private String ingreso_placa;
-    private Date ingreso_fechaIngreso;
+    private Date   ingreso_fechaIngreso = new Date();
     private String ingreso_peaje;
     private String ingreso_sentido;
-    private int ingreso_monto;
+    private int    ingreso_monto;
 
     public int getIngreso_id() {
         return ingreso_id;
@@ -25,7 +25,8 @@ public class Ingreso {
     }
 
     public Date getIngreso_fecha() {
-        return ingreso_fecha;
+        java.sql.Date sqlDate = new java.sql.Date(ingreso_fecha.getTime());
+        return sqlDate;
     }
 
     public void setIngreso_fecha(Date ingreso_fecha) {
@@ -73,7 +74,8 @@ public class Ingreso {
     }
 
     public Date getIngreso_fechaIngreso() {
-        return ingreso_fechaIngreso;
+        java.sql.Date sqlDate = new java.sql.Date(ingreso_fechaIngreso.getTime());
+        return sqlDate;
     }
 
     public void setIngreso_fechaIngreso(Date ingreso_fechaIngreso) {

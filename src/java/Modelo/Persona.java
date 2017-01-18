@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.Date;
+
 public class Persona {
     
     private int codigo;
@@ -10,7 +12,8 @@ public class Persona {
     private int rol;
     private String departamento;
     private String puesto;
-    private String fechaRegisto;
+    private java.util.Date fechaRegistro = new java.util.Date();
+//    private java.util.Date fechaRegistro;
     private String jefeDirecto;
     private int estado;
 
@@ -108,14 +111,15 @@ public class Persona {
         this.puesto = puesto.toUpperCase();
     }
 
-    public String getFechaRegisto() {
-        return fechaRegisto;
+    public Date getFechaRegistro() {
+        java.sql.Date sqlDate = new java.sql.Date(fechaRegistro.getTime());
+        return sqlDate;
     }
 
-    public void setFechaRegisto(String fechaRegisto) {
-        this.fechaRegisto = fechaRegisto;
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
-
+    
     public String getJefeDirecto() {
         return jefeDirecto;
     }

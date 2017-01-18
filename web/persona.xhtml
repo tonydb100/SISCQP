@@ -54,7 +54,10 @@
                         </p:column>
                         
                         <p:column headerText="Fecha Registro">
-                            <p:outputLabel value="#{persona.fechaRegisto}"/>
+                            <p:outputLabel value="#{persona.fechaRegistro}">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <!--<f:convertDateTime type="datetime" dateStyle="full" pattern="yyyy-MM-dd HH:mm:ss"/>-->
+                            </p:outputLabel>
                         </p:column>
                         
                         <p:column headerText="Jefe">
@@ -143,7 +146,9 @@
                                     <p:outputLabel for="fecha" value="Fecha Registro:"/>
                                 </p:column>
                                 <p:column>
-                                    <p:calendar id="fecha" value="#{manejadorPersona.persona.fechaRegisto}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                                    <p:calendar id="fecha" value="#{manejadorPersona.persona.fechaRegistro}" pattern="yyyy-MM-dd HH:mm:ss"/>
+<!--                                        <f:convertDateTime type="datetime" dateStyle="full" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                    </p:calendar>-->
                                 </p:column>
                             </p:row>
                             <p:row>

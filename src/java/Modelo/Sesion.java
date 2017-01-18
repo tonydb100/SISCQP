@@ -4,41 +4,44 @@ import java.util.Date;
 
 public class Sesion {
 
-    private int idSesiones;
-    private int idPersona;
-    private Date ingreso;
-    private Date salida;
+    private int sesion_id;
+    private int sesion_idPersona;
+    private Date sesion_ingreso = new Date();
+    private Date sesion_salida = new Date();
 
-    public int getIdSesiones() {
-        return idSesiones;
-    }
-
-    public void setIdSesiones(int idSesiones) {
-        this.idSesiones = idSesiones;
-    }
-    
-    public int getIdPersona() {
-        return idPersona;
+    public int getSesion_id() {
+        return sesion_id;
     }
 
-    public void setIdPersona(int idPersona) {
-        this.idPersona = idPersona;
+    public void setSesion_id(int sesion_id) {
+        this.sesion_id = sesion_id;
     }
 
-    public Date getIngreso() {
-        return ingreso;
+    public int getSesion_idPersona() {
+        return sesion_idPersona;
     }
 
-    public void setIngreso(Date ingreso) {
-        this.ingreso = ingreso;
+    public void setSesion_idPersona(int sesion_idPersona) {
+        this.sesion_idPersona = sesion_idPersona;
     }
 
-    public Date getSalida() {
-        return salida;
+    public Date getSesion_ingreso() {
+        java.sql.Date sqlDate = new java.sql.Date(sesion_ingreso.getTime());
+        return sqlDate;
     }
 
-    public void setSalida(Date salida) {
-        this.salida = salida;
+    public void setSesion_ingreso(Date sesion_ingreso) {
+        this.sesion_ingreso = sesion_ingreso;
     }
+
+    public Date getSesion_salida() {
+        java.sql.Date sqlDate = new java.sql.Date(sesion_salida.getTime());
+        return sqlDate;
+    }
+
+    public void setSesion_salida(Date sesion_salida) {
+        this.sesion_salida = sesion_salida;
+    }
+
     
 }

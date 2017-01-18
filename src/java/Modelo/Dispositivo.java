@@ -6,8 +6,6 @@ public class Dispositivo {
 
     private int dispositivo_id;
     private String dispositivo_reserva;
-    private String dispositivo_codigo;
-    private Date dispositivo_fechaCompra;
     private String dispositivo_registroContable;
     private String dispositivo_programaBCR;
     private String dispositivo_tarjeta;
@@ -29,22 +27,6 @@ public class Dispositivo {
 
     public void setDispositivo_reserva(String dispositivo_reserva) {
         this.dispositivo_reserva = dispositivo_reserva;
-    }
-
-    public String getDispositivo_codigo() {
-        return dispositivo_codigo;
-    }
-
-    public void setDispositivo_codigo(String dispositivo_codigo) {
-        this.dispositivo_codigo = dispositivo_codigo;
-    }
-
-    public Date getDispositivo_fechaCompra() {
-        return dispositivo_fechaCompra;
-    }
-
-    public void setDispositivo_fechaCompra(Date dispositivo_fechaCompra) {
-        this.dispositivo_fechaCompra = dispositivo_fechaCompra;
     }
 
     public String getDispositivo_registroContable() {

@@ -4,11 +4,7 @@ import Modelo.Persona;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class DatoPersona extends Conexion {
@@ -17,7 +13,6 @@ public class DatoPersona extends Conexion {
         
         try {
             this.Conectar();
-//        per.setFechaRegisto(this.obtenerHora());
             PreparedStatement st = this.getCn().prepareStatement("INSERT INTO persona (persona_cedula, persona_nombre, persona_apellidos, persona_foto, persona_rol, "
                             + "persona_departamento, persona_puesto, persona_fechaRegistro, persona_jefeDirecto, persona_estado) "
                             + "values (?,?,?,?,?,?,?,?,?,?)");
@@ -28,7 +23,7 @@ public class DatoPersona extends Conexion {
             st.setInt(5, per.getRol());
             st.setString(6, per.getDepartamento());
             st.setString(7, per.getPuesto());
-            st.setString(8, per.getFechaRegisto());
+            st.setDate(8, (java.sql.Date) per.getFechaRegistro());
             st.setString(9, per.getJefeDirecto());
             st.setInt(10, per.getEstado());
             st.executeUpdate();
@@ -37,16 +32,6 @@ public class DatoPersona extends Conexion {
         } finally {
             this.cerrar();
         }
-    }
-    
-    public String obtenerHora(){
-        
-        Calendar c = GregorianCalendar.getInstance();
-        Date fecha = c.getTime();
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        String fechaFinal = f.format(fecha);
-        
-        return fechaFinal;
     }
     
     public List<Persona> listar() throws Exception{
@@ -70,7 +55,7 @@ public class DatoPersona extends Conexion {
                 per.setRol(rs.getInt("persona_rol"));
                 per.setDepartamento(rs.getString("persona_departamento"));
                 per.setPuesto(rs.getString("persona_puesto"));
-                per.setFechaRegisto(rs.getString("persona_fechaRegistro"));
+                per.setFechaRegistro(rs.getDate("persona_fechaRegistro"));
                 per.setJefeDirecto(rs.getString("persona_jefeDirecto"));
                 per.setEstado(rs.getInt("persona_estado"));
                 
@@ -104,7 +89,7 @@ public class DatoPersona extends Conexion {
                 pers.setRol(rs.getInt("persona_rol"));
                 pers.setDepartamento(rs.getString("persona_departamento"));
                 pers.setPuesto(rs.getString("persona_puesto"));
-                pers.setFechaRegisto(rs.getString("persona_fecharegistro"));
+                pers.setFechaRegistro(rs.getDate("persona_fecharegistro"));
                 pers.setJefeDirecto(rs.getString("persona_jefedirecto"));
                 pers.setEstado(rs.getInt("persona_estado"));
             }
@@ -130,7 +115,7 @@ public class DatoPersona extends Conexion {
             st.setInt(5, per.getRol());
             st.setString(6, per.getDepartamento());
             st.setString(7, per.getPuesto());
-            st.setString(8, per.getFechaRegisto());
+            st.setDate(8, (java.sql.Date) per.getFechaRegistro());
             st.setString(9, per.getJefeDirecto());
             st.setInt(10, per.getEstado());
             st.setInt(11, per.getCodigo());

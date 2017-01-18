@@ -2,13 +2,13 @@ package Manejador;
 
 import Modelo.Persona;
 import Datos.DatoPersona;
-import java.io.Serializable;
-import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
 
 @ManagedBean
 @ViewScoped
@@ -43,7 +43,7 @@ public class ManejadorPersona {
     public void setLstPersona(List<Persona> lstPersona) {
         this.lstPersona = lstPersona;
     }
-
+    
     private boolean isPostBack(){
         boolean res;
         res = FacesContext.getCurrentInstance().isPostback();
@@ -72,7 +72,6 @@ public class ManejadorPersona {
         this.persona.setRol(0);
         this.persona.setDepartamento("");
         this.persona.setPuesto("");
-        this.persona.setFechaRegisto("");
         this.persona.setJefeDirecto("");
         this.persona.setEstado(1);
     }
