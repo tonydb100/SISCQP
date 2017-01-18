@@ -6,23 +6,19 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-        <title>Registro de Rutas</title>
-    </h:head>
+    <h:head></h:head>
 
-    <body>
+    <h:body>
 
         <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
-
             <ui:define name="content">
 
                 <f:event type="preRenderView" listener="#{manejadorTarjeta.listar('F')}"/>
-                <f:event type="preRenderView" listener="#{manejadorTarjeta.setAccion('Registrar')}"/>
                 <p:growl id="msj" autoUpdate="true" life="3000"/>
 
-                <h:form styleClass="ui-responsive" style="margin-top: 1em" id="fm">
+                <h:form id="fm" styleClass="ui-responsive">
 
-                    <center> <h3> Solicitud De Tarjeta Y Dispositivo Electrónico Al Banco De Costa Rica </h3> </center>
+                    <h3 align="center"> Solicitud De Tarjeta Y Dispositivo Electrónico Al Banco De Costa Rica </h3>
                     <p:panelGrid id="panelEncabezado" styleClass="ui-responsive">
 
                         <p:row>
@@ -44,7 +40,6 @@
                             <p:column>
                                 <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_programa}"/>
                             </p:column>
-
                         </p:row>
                         <p:row>
                             <p:column>
@@ -54,13 +49,13 @@
                                 <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_encargadoTarjeta}"/>
                             </p:column>
                             <p:column>
-                                <p:outputLabel value="Subprograma"/>
+                                <p:outputLabel value="Subprograma:"/>
                             </p:column>
                             <p:column>
                                 <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_subprograma}"/>
                             </p:column>
                             <p:column>
-                                <p:outputLabel value="Área Actividad"/>
+                                <p:outputLabel value="Área Actividad:"/>
                             </p:column>
                             <p:column>
                                 <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_areaActividad}"/>
@@ -80,7 +75,7 @@
                                 <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_correoElectronico}"/>
                             </p:column>
                             <p:column>
-                                <p:outputLabel value="Número de Oficina: "/>
+                                <p:outputLabel value="Número de Oficina:"/>
                             </p:column>
                             <p:column>
                                 <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_numeroOficina}"/>
@@ -97,7 +92,7 @@
                                 <p:outputLabel value="Fecha:"/>
                             </p:column>
                             <p:column>
-                                <p:calendar id="fecha" value="#{manejadorTarjeta.tarjeta.tarjeta_fecha}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                                <p:calendar id="fecha" value="#{manejadorTarjeta.tarjeta.tarjeta_fecha}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Código Programa del B.C.R.:"/>
@@ -117,7 +112,7 @@
                             </p:column>
                             <p:column>
                                 <p:selectOneMenu value="#{manejadorTarjeta.tarjeta.tarjeta_operador}">  
-                                    <f:selectItem itemLabel="Nombre Completo de los Operadores:" itemValue=""/>
+                                    <f:selectItem itemLabel="Nombre Completo de los Operadores" itemValue=""/>
                                     <f:selectItems value="#{manejadorTarjeta.tarjeta.tarjeta_operador}"/> 
                                 </p:selectOneMenu>
                             </p:column>
@@ -126,12 +121,12 @@
                             </p:column>
                             <p:column>
                                 <p:selectOneMenu value="#{manejadorTarjeta.tarjeta.tarjeta_cedula}">  
-                                    <f:selectItem itemLabel="Cédula de Identidad:" itemValue=""/>
+                                    <f:selectItem itemLabel="Cédula de Identidad" itemValue=""/>
                                     <f:selectItems value="#{manejadorTarjeta.tarjeta.tarjeta_cedula}"/> 
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>
-                                <h:outputText value="N° Equipo"/>  
+                                <h:outputText value="N° Equipo:"/>  
                             </p:column>
                             <p:column>
                                 <p:selectOneMenu value="#{manejadorTarjeta.tarjeta.tarjeta_numeroEquipo}"> 
@@ -148,80 +143,101 @@
                                     <f:selectItems value="#{manejadorTarjeta.tarjeta.tarjeta_numeroPlaca}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column>
-                                <p:commandButton value="Agregar" actionListener="#{manejadorTarjeta.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
-                            </p:column>
                         </p:row>
+                        
                     </p:panelGrid>
-
+                    <left>
+                        <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorTarjeta.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
+                    </left>
 
                     <h3>Listado</h3>
-                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorTarjeta.lstTarjeta}" var="tarjeta" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorTarjeta.lstTarjeta}" var="tarjeta" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Nombre Dependencia Solicitante">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_dependencia}" />
                         </p:column>
+                        
                         <p:column headerText="Nombre del Encargado de la Tarjeta">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_encargadoTarjeta}" />
                         </p:column>
+                        
                         <p:column headerText="Cédula de Identitad">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_cedulaOperador}" />
                         </p:column>
+                        
                         <p:column headerText="Correo Electronico:">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_correoElectronico}" />
                         </p:column>
+                        
                         <p:column headerText="Domicilio del Encargado de la Tarjeta">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_domicilioEncargadoTarjeta}" />
                         </p:column>
+                        
                         <p:column headerText="Ejecutor(a) Responsable">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_ejecutor}" />
                         </p:column>
+                        
                         <p:column headerText="Programa">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_programa}" />
                         </p:column>
+                        
                         <p:column headerText="Subprograma">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_subprograma}" />
                         </p:column>
+                        
                         <p:column headerText="Área Actividad">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_areaActividad}" />
                         </p:column>
+                        
                         <p:column headerText="Número de Oficina">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_numeroOficina}" />
                         </p:column>
+                        
                         <p:column headerText="Código Programa del B.C.R">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_codigoBCR}" />
                         </p:column>
+                        
                         <p:column headerText="Fecha">
-                            <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_fecha}" />
+                            <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_fecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>
+                            </p:outputLabel>
                         </p:column>
+                        
                         <p:column headerText="Nombre de los Operadores">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_operador}" />
                         </p:column>
+                        
                         <p:column headerText="Cedula de Identidad">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_cedula}" />
                         </p:column>
+                        
                         <p:column headerText="N° Equipo">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_numeroEquipo}" />
                         </p:column>
+                        
                         <p:column headerText="N° Placa">
                             <p:outputLabel value="#{manejadorTarjeta.tarjeta.tarjeta_numeroPlaca}" />
                         </p:column>
+                        
                         <p:column headerText="Modificar">
                             <p:commandLink value="Modificar" actionListener="#{manejadorTarjeta.leerID(tarjeta)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
                         </p:column>
+                        
                         <p:column headerText="Eliminar">
-                            <p:commandLink value="Eliminar" actionListener="#{manejadorTarjeta.eliminar(tarjeta)}" update="tablaIngresos"/>
+                            <p:commandLink value="Eliminar" actionListener="#{manejadorTarjeta.eliminar(tarjeta)}" update="data"/>
                         </p:column>
+                        
                     </p:dataTable>
+                    
                 </h:form>
 
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
-                        <p:panelGrid>
+                        <p:panelGrid id="pan" styleClass="ui-responsive">
 
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Nombre Dependencia Solicitante"/>
+                                    <p:outputLabel value="Nombre Dependencia Solicitante:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_dependencia}"/>
@@ -229,7 +245,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Nombre del Encargado de la Tarjeta"/>
+                                    <p:outputLabel value="Nombre del Encargado de la Tarjeta:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_encargadoTarjeta}"/>
@@ -237,7 +253,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Cedula de Identidad"/>
+                                    <p:outputLabel value="Cedula de Identidad:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_cedula}"/>
@@ -245,7 +261,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Domicilio Exacto del Encargado de la Tarjeta"/>
+                                    <p:outputLabel value="Domicilio Exacto del Encargado de la Tarjeta:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_domicilioEncargadoTarjeta}"/>
@@ -253,16 +269,15 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Ejecutor(a) Responsable"/>
+                                    <p:outputLabel value="Ejecutor(a) Responsable:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_ejecutor}"/>
                                 </p:column>
                             </p:row>
-
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Programa"/>
+                                    <p:outputLabel value="Programa:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_programa}"/>
@@ -270,7 +285,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Subprograma"/>
+                                    <p:outputLabel value="Subprograma:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_subprograma}"/>
@@ -278,7 +293,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Correo Electronico"/>
+                                    <p:outputLabel value="Correo Electronico:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_correoElectronico}"/>
@@ -286,7 +301,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Área Actividad"/>
+                                    <p:outputLabel value="Área Actividad:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_encargadoTarjeta}"/>
@@ -294,7 +309,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Número de Oficina"/>
+                                    <p:outputLabel value="Número de Oficina:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_numeroOficina}"/>
@@ -302,15 +317,15 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Fecha"/>
+                                    <p:outputLabel for="fecha" value="Fecha:"/>
                                 </p:column>
                                 <p:column>
-                                    <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_fecha}"/>
+                                    <p:calendar id="fecha" value="#{manejadorTarjeta.tarjeta.tarjeta_fecha}" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </p:column>
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Código Programa del B.C.R."/>
+                                    <p:outputLabel value="Código Programa del B.C.R.:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_codigoBCR}"/>
@@ -318,7 +333,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Nombre del Operador"/>
+                                    <p:outputLabel value="Nombre del Operador:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_operador}"/>
@@ -326,7 +341,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Cedula de Identidad del Operador"/>
+                                    <p:outputLabel value="Cedula de Identidad del Operador:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_cedulaOperador}"/>
@@ -334,7 +349,7 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="N° Equipo"/>
+                                    <p:outputLabel value="N° Equipo:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_numeroEquipo}"/>
@@ -342,19 +357,23 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="N° Placa"/>
+                                    <p:outputLabel value="N° Placa:"/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorTarjeta.tarjeta.tarjeta_numeroPlaca}"/>
                                 </p:column>
                             </p:row>
+                            
                         </p:panelGrid>
+                        <center>
+                            <p:commandButton value="#{manejadorTarjeta.accion}" actionListener="#{manejadorTarjeta.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+                        </center>
                     </h:form>
                 </p:dialog>
 
             </ui:define>
-
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

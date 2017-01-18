@@ -2,41 +2,41 @@ package Modelo;
 
 public class Reserva {
 
-    private int reservas_id;
-    private int reservas_codigo;
-    private Double reservas_montoRestante;
-    private String reservas_descripcion;
+    private int reserva_id;
+    private int reserva_codigo;
+    private Double reserva_montoRestante;
+    private String reserva_descripcion;
 
-    public int getReservas_id() {
-        return reservas_id;
+    public int getReserva_id() {
+        return reserva_id;
     }
 
-    public void setReservas_id(int reservas_id) {
-        this.reservas_id = reservas_id;
+    public void setReserva_id(int reserva_id) {
+        this.reserva_id = reserva_id;
     }
 
-    public int getReservas_codigo() {
-        return reservas_codigo;
+    public int getReserva_codigo() {
+        return reserva_codigo;
     }
 
-    public void setReservas_codigo(int reservas_codigo) {
-        this.reservas_codigo = reservas_codigo;
+    public void setReserva_codigo(int reserva_codigo) {
+        this.reserva_codigo = reserva_codigo;
     }
 
-    public Double getReservas_montoRestante() {
-        return reservas_montoRestante;
+    public Double getReserva_montoRestante() {
+        return reserva_montoRestante;
     }
 
-    public void setReservas_montoRestante(Double reservas_montoRestante) {
-        this.reservas_montoRestante = reservas_montoRestante;
+    public void setReserva_montoRestante(Double reserva_montoRestante) {
+        this.reserva_montoRestante = reserva_montoRestante;
     }
 
-    public String getReservas_descripcion() {
-        return reservas_descripcion;
+    public String getReserva_descripcion() {
+        return reserva_descripcion;
     }
 
-    public void setReservas_descripcion(String reservas_descripcion) {
-        this.reservas_descripcion = reservas_descripcion;
+    public void setReserva_descripcion(String reserva_descripcion) {
+        this.reserva_descripcion = reserva_descripcion;
     }
 
 }

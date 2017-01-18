@@ -11,7 +11,6 @@
     <h:body>
 
         <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
-
             <ui:define name="content">
 
                 <f:event type="preRenderView" listener="#{manejadorIngreso.listar('F')}"/>
@@ -27,7 +26,7 @@
                                 <p:outputLabel for="fecha" value="Fecha:"/>
                             </p:column>
                             <p:column>
-                                <p:calendar id="fecha" value="#{manejadorIngreso.ingreso.ingreso_fecha}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                                <p:calendar id="fecha" value="#{manejadorIngreso.ingreso.ingreso_fecha}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Dependencia: "/>
