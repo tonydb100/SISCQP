@@ -2,13 +2,10 @@ package Manejador;
 
 import Modelo.Persona;
 import Datos.DatoPersona;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.SelectEvent;
 
 @ManagedBean
 @ViewScoped
@@ -17,7 +14,6 @@ public class ManejadorPersona {
     private Persona persona = new Persona();
     private List<Persona> lstPersona;
     private String accion;
-    private String fechaFinal;
 
     public String getAccion() {
         return accion;

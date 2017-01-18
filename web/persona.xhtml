@@ -6,8 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-    </h:head>
+    <h:head></h:head>
 
     <h:body>
 
@@ -19,10 +18,13 @@
                 <p:growl id="msj" autoUpdate="true" life="3000"/>
         
                 <h:form id="fm">
+                    
                     <h3 align="center">Mantenimiento de Usuarios</h3>
-                    <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos"/><br />
+                    <left>
+                        <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
+                    </left>
 
-                    <p:dataTable paginator="true" rows="5" styleClass="ui-responsive" id="data" value="#{manejadorPersona.lstPersona}" var="persona" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorPersona.lstPersona}" var="persona" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Cédula">
                             <p:outputLabel value="#{persona.cedula}"/>
@@ -55,7 +57,6 @@
                         <p:column headerText="Fecha Registro">
                             <p:outputLabel value="#{persona.fechaRegistro}">
                                 <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>
-                                <!--<f:convertDateTime type="datetime" dateStyle="full" pattern="yyyy-MM-dd HH:mm:ss"/>-->
                             </p:outputLabel>
                         </p:column>
                         
@@ -76,7 +77,6 @@
                         </p:column>
 
                     </p:dataTable>
-
 
                 </h:form>
 
@@ -146,8 +146,6 @@
                                 </p:column>
                                 <p:column>
                                     <p:calendar id="fecha" value="#{manejadorPersona.persona.fechaRegistro}" pattern="yyyy-MM-dd HH:mm:ss"/>
-<!--                                        <f:convertDateTime type="datetime" dateStyle="full" pattern="yyyy-MM-dd HH:mm:ss"/>
-                                    </p:calendar>-->
                                 </p:column>
                             </p:row>
                             <p:row>
@@ -166,21 +164,16 @@
                                     <p:inputText value="#{manejadorPersona.persona.estado}"/>
                                 </p:column>
                             </p:row>
-                            <p:row>
-                                <p:column>
-                                    <p:commandButton value="#{manejadorPersona.accion}" actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
-                                </p:column>
-                            </p:row>
-                        
+                            
                         </p:panelGrid>
+                        <center>
+                            <p:commandButton value="#{manejadorPersona.accion}" actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+                        </center>
                     </h:form>
                 </p:dialog>
 
             </ui:define>
-
         </ui:composition>
 
     </h:body>

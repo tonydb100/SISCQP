@@ -20,7 +20,7 @@ public class ManejadorIngreso {
     }
 
     public void setAccion(String accion) {
-        this.limpiar();
+//        this.limpiar();
         this.accion = accion;
     }
 
@@ -86,6 +86,7 @@ public class ManejadorIngreso {
             dao = new DatoIngreso();
             dao.modificar(ingreso);
             this.listar("V");
+            this.limpiar();
         } catch (Exception e) {
             throw e;
         }
@@ -122,7 +123,7 @@ public class ManejadorIngreso {
             
             if (temp != null) {
                 this.ingreso = temp;
-                this.modificar();
+                this.accion = "Modificar";
             }
             
         } catch (Exception e) {

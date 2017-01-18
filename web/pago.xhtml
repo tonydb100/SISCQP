@@ -6,11 +6,9 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-        <title>Registro de Rutas</title>
-    </h:head>
+    <h:head></h:head>
 
-    <body>
+    <h:body>
 
         <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
 
@@ -35,7 +33,6 @@
                                 <p:outputLabel value="Dependencia: "/>
                             </p:column>
                             <p:column>
-                                <!--<p:inputText value="#{manejadorIngreso.ingreso.ingreso_dependencia}" required="true" requiredMessage="Ingrese Dependencia"/>-->
                                 <p:inputText value="#{manejadorIngreso.ingreso.ingreso_dependencia}"/>
                             </p:column>
                             <p:column>
@@ -106,48 +103,60 @@
 
                     </p:panelGrid>
                     <left>
-                        <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
+                        <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorIngreso.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
                     </left>
 
                     <h3>Listado</h3>
-                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorIngreso.lstIngreso}" var="ingreso" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorIngreso.lstIngreso}" var="ingreso" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Fecha">
-                            <p:outputLabel value="#{ingreso.ingreso_fechaIngreso}"/>
+                            <p:outputLabel value="#{ingreso.ingreso_fechaIngreso}">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>
+                            </p:outputLabel>
                         </p:column>
+                        
                         <p:column headerText="Dependencia">
                             <p:outputLabel value="#{ingreso.ingreso_dependencia}"/>
                         </p:column>
+                        
                         <p:column headerText="Operador">
                             <p:outputLabel value="#{ingreso.ingreso_operador}"/>
                         </p:column>
+                        
                         <p:column headerText="Dispositivo">
                             <p:outputLabel value="#{ingreso.ingreso_dispositivo}"/>
                         </p:column>
+                        
                         <p:column headerText="Equipo">
                             <p:outputLabel value="#{ingreso.ingreso_dispositivo}"/>
                         </p:column>
+                        
                         <p:column headerText="Placa">
                             <p:outputLabel value="#{ingreso.ingreso_placa}"/>
                         </p:column>
+                        
                         <p:column headerText="Fecha Ingreso">
                             <p:outputLabel value="#{ingreso.ingreso_fecha}"/>
                         </p:column>
+                        
                         <p:column headerText="Peaje">
                             <p:outputLabel value="#{ingreso.ingreso_peaje}"/>
                         </p:column>
+                        
                         <p:column headerText="Sentido">
                             <p:outputLabel value="#{ingreso.ingreso_sentido}"/>
                         </p:column>
+                        
                         <p:column headerText="Monto">
                             <p:outputLabel value="#{ingreso.ingreso_monto}"/>
                         </p:column>
+                        
                         <p:column headerText="Modificar">
                             <p:commandLink value="Modificar" actionListener="#{manejadorIngreso.leerID(ingreso)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
                         </p:column>
 
                         <p:column headerText="Eliminar">
-                            <p:commandLink value="Eliminar" actionListener="#{manejadorIngreso.eliminar(ingreso)}" update="tablaIngresos"/>
+                            <p:commandLink value="Eliminar" actionListener="#{manejadorIngreso.eliminar(ingreso)}" update="data"/>
                         </p:column>
 
                     </p:dataTable>
@@ -156,13 +165,14 @@
 
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
-                        <p:panelGrid>
+                        <p:panelGrid id="pan" styleClass="ui-responsive">
+                            
                             <p:row>
                                 <p:column>
                                     <p:outputLabel for="dlgFecha" value="Fecha:"/>
                                 </p:column>
                                 <p:column>
-                                    <p:calendar id="dlgFecha" value="#{manejadorIngreso.ingreso.ingreso_fecha}" pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <p:calendar id="dlgFecha" value="#{manejadorIngreso.ingreso.ingreso_fecha}" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </p:column>
                             </p:row>
                             <p:row>
@@ -210,7 +220,7 @@
                                     <p:outputLabel for="FechaIngreso" value="Fecha Ingreso:"/>
                                 </p:column>
                                 <p:column>
-                                    <p:calendar id="FechaIngreso" value="#{manejadorIngreso.ingreso.ingreso_fechaIngreso}" pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <p:calendar id="FechaIngreso" value="#{manejadorIngreso.ingreso.ingreso_fechaIngreso}" pattern="yyyy-MM-dd HH:mm:ss" />
                                 </p:column>
                             </p:row>
                             <p:row>
@@ -237,22 +247,17 @@
                                     <p:inputText value="#{manejadorIngreso.ingreso.ingreso_monto}"/>
                                 </p:column>
                             </p:row>
-                            <p:row>
-                                <p:column>
-                                    <p:commandButton value="#{manejadorIngreso.accion}" actionListener="#{manejadorIngreso.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:tablaIngresos"/>
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
-                                </p:column>
-                            </p:row>
                             
                         </p:panelGrid>
                         <center>
+                            <p:commandButton value="#{manejadorIngreso.accion}" actionListener="#{manejadorIngreso.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
                         </center>
                     </h:form>
                 </p:dialog>
 
             </ui:define>
         </ui:composition>
-    </body>
+        
+    </h:body>
 </html>
