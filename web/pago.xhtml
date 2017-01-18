@@ -17,7 +17,6 @@
             <ui:define name="content">
 
                 <f:event type="preRenderView" listener="#{manejadorIngreso.listar('F')}"/>
-                <f:event type="preRenderView" listener="#{manejadorIngreso.setAccion('Registrar')}"/>
                 <p:growl id="msj" autoUpdate="true" life="3000"/>
 
                 <h:form id="fm">
@@ -36,7 +35,8 @@
                                 <p:outputLabel value="Dependencia: "/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_dependencia}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                <!--<p:inputText value="#{manejadorIngreso.ingreso.ingreso_dependencia}" required="true" requiredMessage="Ingrese Dependencia"/>-->
+                                <p:inputText value="#{manejadorIngreso.ingreso.ingreso_dependencia}"/>
                             </p:column>
                             <p:column>
                                 <p:outputLabel value="Operador: "/>
@@ -102,14 +102,11 @@
                             <p:column>
                                 <p:inputText value="#{manejadorIngreso.ingreso.ingreso_monto}"/>
                             </p:column>
-<!--                            <p:column>
-                                <p:commandButton value="Registrar" actionListener="#{manejadorIngreso.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
-                            </p:column>-->
                         </p:row>
 
                     </p:panelGrid>
                     <left>
-                        <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorIngreso.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
+                        <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
                     </left>
 
                     <h3>Listado</h3>
@@ -210,10 +207,10 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel for="dlgFechaIngreso" value="Fecha Ingreso:"/>
+                                    <p:outputLabel for="FechaIngreso" value="Fecha Ingreso:"/>
                                 </p:column>
                                 <p:column>
-                                    <p:calendar id="dlgFechaIngreso" value="#{manejadorIngreso.ingreso.ingreso_fechaIngreso}" pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <p:calendar id="FechaIngreso" value="#{manejadorIngreso.ingreso.ingreso_fechaIngreso}" pattern="MM/dd/yyyy HH:mm:ss" />
                                 </p:column>
                             </p:row>
                             <p:row>
@@ -240,18 +237,17 @@
                                     <p:inputText value="#{manejadorIngreso.ingreso.ingreso_monto}"/>
                                 </p:column>
                             </p:row>
-<!--                            <p:row>
+                            <p:row>
                                 <p:column>
                                     <p:commandButton value="#{manejadorIngreso.accion}" actionListener="#{manejadorIngreso.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:tablaIngresos"/>
                                 </p:column>
                                 <p:column>
                                     <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
                                 </p:column>
-                            </p:row>-->
+                            </p:row>
+                            
                         </p:panelGrid>
                         <center>
-                            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
-                            <p:commandButton value="#{manejadorIngreso.accion}" actionListener="#{manejadorIngreso.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:tablaIngresos"/>
                         </center>
                     </h:form>
                 </p:dialog>

@@ -7,7 +7,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title>Registro de Rutas</title>
     </h:head>
 
     <h:body>
@@ -17,7 +16,7 @@
             <ui:define name="content">
 
                 <f:event type="preRenderView" listener="#{manejadorPersona.listar('F')}"/>
-                <p:growl id="msj" autoUpdate="true"/>
+                <p:growl id="msj" autoUpdate="true" life="3000"/>
         
                 <h:form id="fm">
                     <h3 align="center">Mantenimiento de Usuarios</h3>
