@@ -4,11 +4,13 @@ import Datos.DatoIngreso;
 import Modelo.Ingreso;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
+@SessionScoped
 public class ManejadorIngreso {
     
     private Ingreso ingreso = new Ingreso();

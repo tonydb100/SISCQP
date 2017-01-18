@@ -1,7 +1,5 @@
 package Modelo;
 
-import java.util.Date;
-
 public class Dispositivo {
 
     private int dispositivo_id;
@@ -76,6 +74,5 @@ public class Dispositivo {
     public void setDispositivo_montoFacturas(double dispositivo_montoFacturas) {
         this.dispositivo_montoFacturas = dispositivo_montoFacturas;
     }
-    
     
 }

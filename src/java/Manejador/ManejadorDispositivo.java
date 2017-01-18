@@ -2,43 +2,21 @@ package Manejador;
 
 import Datos.DatoDispositivo;
 import Modelo.Dispositivo;
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.SessionScoped;
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
    
 @ManagedBean
 @ViewScoped
 @SessionScoped
-public class ManejadorDispositivo implements Serializable {
+public class ManejadorDispositivo {
     
-    private static final long serialVersionUID = 1L;
     private Dispositivo dispositivo = new Dispositivo();
     private List<Dispositivo> lstDispositivo;
     private String accion;
-    private String fechaFinal;
-    private Date date10;
      
-    public void onDateSelect(SelectEvent event) {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
-    }
-     
-    public void click() {
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-         
-        requestContext.update("form:display");
-        requestContext.execute("PF('dlg').show()");
-    }
-    
     public Dispositivo getDispositivo() {
         return dispositivo;
     }
@@ -112,6 +90,7 @@ public class ManejadorDispositivo implements Serializable {
             dao = new DatoDispositivo();
             dao.modificar(dispositivo);
             this.listar("V");
+            this.limpiar();
         } catch (Exception e) {
             throw e;
         }
@@ -128,8 +107,8 @@ public class ManejadorDispositivo implements Serializable {
                     lstDispositivo = dao.listar();
                 }
             }else{
-                    dao = new DatoDispositivo();
-                    lstDispositivo = dao.listar();
+                dao = new DatoDispositivo();
+                lstDispositivo = dao.listar();
             }
         } catch (Exception e) {
             throw e;

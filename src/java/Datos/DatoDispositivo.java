@@ -14,8 +14,8 @@ public class DatoDispositivo extends Conexion {
         try {
             this.Conectar();
             PreparedStatement st = this.getCn().prepareStatement("INSERT INTO dispositivo (dispositivo_reserva, dispositivo_registroContable, "
-                    + ", dispositivo_tarjeta, dispositivo_periodoCobro, dispositivo_factura, dispositivo_montoFacturas"
-                    + "values (?,?,?,?,?,?,?,?,?,?)");
+                    + "dispositivo_programaBCR dispositivo_tarjeta, dispositivo_periodoCobro, dispositivo_factura, dispositivo_montoFacturas"
+                    + "values (?,?,?,?,?,?,?)");
             st.setString(1, per.getDispositivo_reserva());
             st.setString(2, per.getDispositivo_registroContable());
             st.setString(3, per.getDispositivo_programaBCR());
@@ -43,7 +43,6 @@ public class DatoDispositivo extends Conexion {
             lista = new ArrayList();
 
             while (rs.next()) {
-
                 Dispositivo per = new Dispositivo();
                 per.setDispositivo_id(rs.getInt("dispositivo_id"));
                 per.setDispositivo_reserva(rs.getString("dispositivo_reserva"));
@@ -53,6 +52,7 @@ public class DatoDispositivo extends Conexion {
                 per.setDispositivo_periodoCobro(rs.getString("dispositivo_periodoCobro"));
                 per.setDispositivo_factura(rs.getString("dispositivo_factura"));
                 per.setDispositivo_montoFacturas(rs.getDouble("dispositivo_montoFacturas"));
+                
                 lista.add(per);
             }
         } catch (Exception e) {

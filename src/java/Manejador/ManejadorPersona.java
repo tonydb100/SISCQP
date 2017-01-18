@@ -4,11 +4,13 @@ import Modelo.Persona;
 import Datos.DatoPersona;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
+@SessionScoped
 public class ManejadorPersona {
 
     private Persona persona = new Persona();
@@ -111,8 +113,8 @@ public class ManejadorPersona {
                     lstPersona = dao.listar();
                 }
             }else{
-                    dao = new DatoPersona();
-                    lstPersona = dao.listar();
+                dao = new DatoPersona();
+                lstPersona = dao.listar();
             }
         } catch (Exception e) {
             throw e;

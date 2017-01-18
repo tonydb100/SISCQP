@@ -6,130 +6,149 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-        <title>Registro de Rutas</title>
-    </h:head>
+    <h:head></h:head>
 
-    <body>
+    <h:body>
 
         <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
 
             <ui:define name="content">
 
                 <f:event type="preRenderView" listener="#{manejadorDispositivo.listar('F')}"/>
-                <f:event type="preRenderView" listener="#{manejadorDispositivo.setAccion('Registrar')}"/>
                 <p:growl id="msj" autoUpdate="true" life="3000"/>
 
-                <h:form styleClass="ui-responsive">
+                <h:form id="fm" styleClass="ui-responsive">
 
                     <h3 align="center">Control De Dispositivo Electrónico De Peajes</h3>
                     <p:panelGrid id="panelEncabezado" styleClass="ui-responsive">
-
                         <p:row>
+                            
                             <p:column>
                                 <p:outputLabel value="Reserva de Recurso:"/>
                             </p:column>
+                            
                             <p:column>
                                 <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_reserva}" required="true" requiredMessage="Ingrese Reserva del Recurso"/>
                             </p:column>
+                            
                             <p:column>
-                                <p:outputLabel value="Registro Contable: "/>
+                                <p:outputLabel value="Registro Contable:"/>
                             </p:column>
+                            
                             <p:column>
                                 <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_registroContable}" required="true" requiredMessage="Ingrese Registro Contable"/>
                             </p:column>
+                            
                             <p:column>
                                 <p:outputLabel value="Código Programa del B.C.R."/>
                             </p:column>
+                            
                             <p:column>
                                 <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_programaBCR}" required="true" requiredMessage="Ingrese Código Programa del B.C.R."/>
                             </p:column>
+                            
                         </p:row>
                     </p:panelGrid>
 
                     <h3>Ingresos</h3>
                     <p:panelGrid id="panelIngresos" styleClass="ui-responsive">
                         <p:row>
+                            
                             <p:column>
                                 <p:outputLabel value="Nº De Tarjeta:" />
                             </p:column>
+                            
                             <p:column>
-                                <p:selectOneMenu value="#{manejadorDispositivo.dispositivo.dispositivo_tarjeta}" id="tarjeta">  
+                                <p:selectOneMenu id="tarjeta" value="#{manejadorDispositivo.dispositivo.dispositivo_tarjeta}">  
                                     <f:selectItem itemLabel="Nº De Tarjeta:" itemValue=""/>
                                     <f:selectItems value="#{manejadorDispositivo.dispositivo.dispositivo_tarjeta}"/> 
-                                    <p:ajax update="tarjeta" />
+                                    <p:ajax update="periodo" />
                                 </p:selectOneMenu>
                             </p:column>
+                            
                             <p:column>
                                 <h:outputText value="Periodo de Cobro:"/>  
                             </p:column>
+                            
                             <p:column>
-                                <p:selectOneMenu value="#{manejadorDispositivo.dispositivo.dispositivo_periodoCobro}" id="periodo">  
+                                <p:selectOneMenu id="periodo" value="#{manejadorDispositivo.dispositivo.dispositivo_periodoCobro}">  
                                     <f:selectItem itemLabel="Periodo de Cobro:" itemValue=""/>
                                     <f:selectItems value="#{manejadorDispositivo.dispositivo.dispositivo_periodoCobro}"/>
                                 </p:selectOneMenu>
                             </p:column>
+                            
                             <p:column>
                                 <h:outputText value="Nº de Factura:"/>  
                             </p:column>
+                            
                             <p:column>
-                                <p:selectOneMenu value="#{manejadorDispositivo.dispositivo.dispositivo_factura}" id="numFact"> 
+                                <p:selectOneMenu id="numFact" value="#{manejadorDispositivo.dispositivo.dispositivo_factura}"> 
                                     <f:selectItem itemLabel="Nº De Factura:" itemValue=""/>
                                     <f:selectItems value="#{manejadorDispositivo.dispositivo.dispositivo_factura}"/>
-                                    <p:ajax update="monto" />
                                 </p:selectOneMenu>
                             </p:column>
+                            
                             <p:column>
-                                <p:outputLabel value="Monto De Facturas ₡" id="monto"/>
+                                <p:outputLabel id="monto" value="Monto De Facturas ₡"/>
                             </p:column>
+                            
                             <p:column>
                                 <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_montoFacturas}" required="true" requiredMessage="Ingrese Dependencia"/>
                             </p:column>
+                            
                             <p:column>
-                                <p:commandButton value="Agregar" actionListener="#{manejadorDispositivo.registrar()}" title="Registrar Nuevo" update="tablaIngresos"/>
+                                <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorDispositivo.setAccion('Registrar')}" title="Registrar Nuevo" update="data"/>
                             </p:column>
+                            
                         </p:row>
                     </p:panelGrid>
 
                     <h3>Listado</h3>
-                    <p:dataTable id="tablaIngresos" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorDispositivo.lstDispositivo}" var="dispositivo" emptyMessage="Sin registros para mostrar">
+                    <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorDispositivo.lstDispositivo}" var="dispositivo" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Reserva de Recurso">
                             <p:outputLabel value="#{dispositivo.dispositivo_reserva}" />
                         </p:column>
+                        
                         <p:column headerText="Registro Contable">
                             <p:outputLabel value="#{dispositivo.dispositivo_registroContable}"/>
                         </p:column>
+                        
                         <p:column headerText="Codigo Programa del B.C.R.">
                             <p:outputLabel value="#{dispositivo.dispositivo_reserva}"/>
                         </p:column>
+                        
                         <p:column headerText="Nº De Tarjeta">
                             <p:outputLabel value="#{dispositivo.dispositivo_tarjeta}"/>
                         </p:column>
+                        
                         <p:column headerText="Periodo de Cobro">
                             <p:outputLabel value="#{dispositivo.dispositivo_periodoCobro}"/>
                         </p:column>
+                        
                         <p:column headerText="Nº Factura">
                             <p:outputLabel value="#{dispositivo.dispositivo_factura}"/>
                         </p:column>
+                        
                         <p:column headerText="Monto de Facturas ₡">
                             <p:outputLabel value="#{dispositivo.dispositivo_montoFacturas}"/>
                         </p:column>
+                        
                         <p:column headerText="Modificar">
                             <p:commandLink value="Modificar" actionListener="#{manejadorDispositivo.leerID(dispositivo)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
                         </p:column>
 
                         <p:column headerText="Eliminar">
-                            <p:commandLink value="Eliminar" actionListener="#{manejadorDispositivo.eliminar(dispositivo)}" update="tablaIngresos"/>
+                            <p:commandLink value="Eliminar" actionListener="#{manejadorDispositivo.eliminar(dispositivo)}" update="data"/>
                         </p:column>
-
 
                     </p:dataTable>
                 </h:form>
 
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
-                        <p:panelGrid>
+                        <p:panelGrid id="pan" styleClass="ui-responsive">
+                            
                             <p:row>
                                 <p:column>
                                     <p:outputLabel value="Reserva de Recurso:"/>
@@ -180,20 +199,23 @@
                             </p:row>
                             <p:row>
                                 <p:column>
-                                    <p:outputLabel value="Monto De Facturas ₡" id="monto"/>
+                                    <p:outputLabel value="Monto De Facturas ₡"<s/>
                                 </p:column>
                                 <p:column>
                                     <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_montoFacturas}" required="true" requiredMessage="Ingrese Dependencia"/>
                                 </p:column>
                             </p:row>
+                            
                         </p:panelGrid>
-
+                        <center>
+                            <p:commandButton value="#{manejadorDispositivo.accion}" actionListener="#{manejadorDispositivo.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+                        </center>
                     </h:form>
                 </p:dialog>
 
             </ui:define>
-
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>
