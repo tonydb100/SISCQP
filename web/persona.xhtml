@@ -166,10 +166,12 @@
                             </p:row>
                             
                         </p:panelGrid>
+                        
                         <center>
                             <p:commandButton value="#{manejadorPersona.accion}" actionListener="#{manejadorPersona.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
                             <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
                         </center>
+                        
                     </h:form>
                 </p:dialog>
 

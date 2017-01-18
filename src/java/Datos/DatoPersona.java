@@ -119,6 +119,7 @@ public class DatoPersona extends Conexion {
             st.setString(9, per.getJefeDirecto());
             st.setInt(10, per.getEstado());
             st.setInt(11, per.getCodigo());
+            
             st.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             throw e;

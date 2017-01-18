@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head></h:head>
+
+    <h:body>
+
+        <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <f:event type="preRenderView" listener="#{manejadorPeaje.listar('F')}"/>
+                <p:growl id="msj" autoUpdate="true" life="3000"/>
+        
+                <h:form id="fm" styleClass="ui-responsive">
+                    
+                    <h3 align="center">Mantenimiento de Peajes</h3>
+                    <left>
+                        <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPeaje.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
+                    </left>
+
+                    <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorPeaje.lstPeaje}" var="peaje" emptyMessage="Sin registros para mostrar">
+
+                        <p:column headerText="Nombre">
+                            <p:outputLabel value="#{peaje.peaje_nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Sentido">
+                            <p:outputLabel value="#{peaje.peaje_sentido}"/>
+                        </p:column>
+
+                        <p:column headerText="Tipo Vehículo">
+                            <p:outputLabel value="#{peaje.peaje_tipoVehiculo}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Monto">
+                            <p:graphicImage value="#{peaje.peaje_monto}" />
+                        </p:column>
+                        
+                        <p:column headerText="Modificar">
+                            <p:commandLink value="Modificar" actionListener="#{manejadorPeaje.leerID(peaje)}" oncomplete="PF('wdlgDatos').show();" update=":dlgDatos"/>
+                        </p:column>
+
+                        <p:column headerText="Eliminar">
+                            <p:commandLink value="Eliminar" actionListener="#{manejadorPeaje.eliminar(peaje)}" update="data"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:form>
+
+                <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
+                    <h:form>
+                        <p:panelGrid id="pan" styleClass="ui-responsive">
+
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Nombre:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPeaje.peaje.peaje_nombre}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Sentido:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPeaje.peaje.peaje_sentido}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Tipo Vehículo:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPeaje.peaje.peaje_tipoVehiculo}"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:outputLabel value="Monto:"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText value="#{manejadorPeaje.peaje.peaje_monto}"/>
+                                </p:column>
+                            </p:row>
+                            
+                        </p:panelGrid>
+                        
+                        <center>
+                            <p:commandButton value="#{manejadorPeaje.accion}" actionListener="#{manejadorPeaje.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
+                        </center>
+                        
+                    </h:form>
+                </p:dialog>
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

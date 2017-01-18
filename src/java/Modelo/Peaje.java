@@ -2,50 +2,50 @@ package Modelo;
 
 public class Peaje {
 
-    private int idPeaje;
-    private String nombre;
-    private String sentido;
-    private String tipoVehiculo;
-    private int monto;
+    private int peaje_id;
+    private String peaje_nombre;
+    private String peaje_sentido;
+    private String peaje_tipoVehiculo;
+    private int peaje_monto;
 
-    public int getIdPeaje() {
-        return idPeaje;
+    public int getPeaje_id() {
+        return peaje_id;
     }
 
-    public void setIdPeaje(int idPeaje) {
-        this.idPeaje = idPeaje;
+    public void setPeaje_id(int peaje_id) {
+        this.peaje_id = peaje_id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getPeaje_nombre() {
+        return peaje_nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPeaje_nombre(String peaje_nombre) {
+        this.peaje_nombre = peaje_nombre;
     }
 
-    public String getSentido() {
-        return sentido;
+    public String getPeaje_sentido() {
+        return peaje_sentido;
     }
 
-    public void setSentido(String sentido) {
-        this.sentido = sentido;
+    public void setPeaje_sentido(String peaje_sentido) {
+        this.peaje_sentido = peaje_sentido;
     }
 
-    public String getTipoVehiculo() {
-        return tipoVehiculo;
+    public String getPeaje_tipoVehiculo() {
+        return peaje_tipoVehiculo;
     }
 
-    public void setTipoVehiculo(String tipoVehiculo) {
-        this.tipoVehiculo = tipoVehiculo;
+    public void setPeaje_tipoVehiculo(String peaje_tipoVehiculo) {
+        this.peaje_tipoVehiculo = peaje_tipoVehiculo;
     }
 
-    public int getMonto() {
-        return monto;
+    public int getPeaje_monto() {
+        return peaje_monto;
     }
 
-    public void setMonto(int monto) {
-        this.monto = monto;
+    public void setPeaje_monto(int peaje_monto) {
+        this.peaje_monto = peaje_monto;
     }
-   
+
 }
