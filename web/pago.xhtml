@@ -77,9 +77,9 @@
                                 <h:outputText value="Peaje:"/>  
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{manejadorIngreso.ingreso.ingreso_peaje}" id="pea">  
-                                    <f:selectItem itemLabel="Nombre Peaje" itemValue=""/>
-                                    <f:selectItems value="#{manejadorIngreso.ingreso.ingreso_peaje}"/> 
+                                <p:selectOneMenu value="#{manejadorIngreso.ingreso.ingreso_peaje}" converter="omnifaces.SelectItemsConverter">  
+                                    <f:selectItem noSelectionOption="true" itemLabel="Nombre Peaje" itemValue="#{null}"/>
+                                    <f:selectItems value="#{manejadorPeaje.lstPeaje}" var="peaje" itemLabel="#{peaje.peaje_nombre}" itemValue="#{peaje}"/> 
                                     <p:ajax update="sent" />
                                 </p:selectOneMenu>
                             </p:column>
@@ -87,9 +87,9 @@
                                 <h:outputText value="Sentido:"/>  
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{manejadorIngreso.ingreso.ingreso_sentido}" id="sent"> 
-                                    <f:selectItem itemLabel="Sentido" itemValue=""/>
-                                    <f:selectItems value="#{manejadorIngreso.ingreso.ingreso_sentido}"/>
+                                <p:selectOneMenu id="sent" value="#{manejadorIngreso.ingreso.ingreso_sentido}" converter="omnifaces.SelectItemsConverter"> 
+                                    <f:selectItem noSelectionOption="true" itemLabel="Sentido" itemValue="#{null}"/>
+                                    <f:selectItems value="#{manejadorPeaje.lstPeaje}" var="peaje" itemLabel="#{peaje.peaje_sentido}" itemValue="#{peaje}"/>
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>

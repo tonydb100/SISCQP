@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head></h:head>
+
+    <h:body>
+
+        <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+            <ui:define name="content">
+
+                <f:event type="preRenderView" listener="#{manejadorPeaje.listar('F')}"/>
+                <p:growl id="msj" autoUpdate="true" showDetail="true" life="3000"/>
+
+                <h:form id="fm" styleClass="ui-responsive">
+
+                    <h3 align="center">Control de Circulación de Vehículos en Peajes Electrónicos</h3>
+                    <p:panelGrid id="panelEncabezado">
+
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="fecha" value="Fecha:"/>
+                            </p:column>
+                            <p:column>
+                                <p:calendar id="fecha" value="#{manejadorIngreso_1.ingreso_fecha}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Dependencia: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{manejadorIngreso_1.ingreso_dependencia}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Operador: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{manejadorIngreso_1.ingreso_operador}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Numero Dispositivo: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{manejadorIngreso_1.ingreso_dispositivo}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Numero Equipo: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{manejadorIngreso_1.ingreso_equipo}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Numero Placa: "/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{manejadorIngreso_1.ingreso_placa}"/>
+                            </p:column>
+                        </p:row>
+
+                    </p:panelGrid>
+
+                    <h3>Ingresos</h3>
+                    <p:panelGrid id="panelIngresos">
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="fechaIngreso" value="Fecha Ingreso:" />
+                            </p:column>
+                            <p:column>
+                                <p:calendar id="fechaIngreso" value="#{manejadorIngreso_1.ingreso_fechaIngreso}" pattern="MM/dd/yyyy HH:mm:ss" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Peaje:"/>  
+                            </p:column>
+                            <p:column>
+<!--                                <p:selectOneMenu value="#{manejadorIngreso_1.ingreso.ingreso_peaje}" converter="omnifaces.SelectItemsConverter">  
+                                    <f:selectItem noSelectionOption="true" itemLabel="Nombre Peaje" itemValue="#{null}"/>
+                                    <f:selectItems value="#{manejadorPeaje.lstPeaje}" var="peaje" itemLabel="#{peaje.peaje_nombre}" itemValue="#{peaje.peaje_nombre}"/> 
+                                    <p:ajax update="sent" />
+                                </p:selectOneMenu>-->
+                                <p:selectOneMenu value="#{manejadorIngreso_1.ingreso_peaje}">
+                                    <f:selectItem itemLabel="ESCAZU" itemValue="ESCAZU"/>
+                                    <f:selectItem itemLabel="SAN RAFAEL" itemValue="SAN RAFAEL"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Sentido:"/>  
+                            </p:column>
+                            <p:column>
+<!--                                <p:selectOneMenu id="sent" value="#{manejadorIngreso_1.ingreso.ingreso_sentido}" converter="omnifaces.SelectItemsConverter"> 
+                                    <f:selectItem noSelectionOption="true" itemLabel="Sentido" itemValue="#{null}"/>
+                                    <f:selectItems value="#{manejadorPeaje.peaje.peaje_nombre}" var="peaje" itemLabel="#{peaje.peaje_sentido}" itemValue="#{peaje.peaje_sentido}"/>
+                                </p:selectOneMenu>-->
+                                <p:selectOneMenu value="#{manejadorIngreso_1.ingreso_sentido}">
+                                    <f:selectItem itemLabel="ESCAZU-SABANA" itemValue="ESCAZU-SABANA"/>
+                                    <f:selectItem itemLabel="SAN RAFAEL-ESCAZU" itemValue="SAN RAFAEL-ESCAZU"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Monto:"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{manejadorIngreso_1.ingreso_monto}"/>
+                            </p:column>
+                        </p:row>
+
+                    </p:panelGrid>
+                    <left>
+                        <p:commandButton value="Agregar" actionListener="#{manejadorIngreso_1.agregar()}" update="data"/>
+                    </left>
+
+                    <h3>Listado</h3>
+                    <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorIngreso_1.lstIngreso}" var="ingreso" emptyMessage="Sin registros para mostrar">
+
+                        <p:column headerText="Fecha">
+                            <p:outputLabel value="#{ingreso.ingreso_fecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>
+                            </p:outputLabel>
+                        </p:column>
+                        
+                        <p:column headerText="Dependencia">
+                            <p:outputLabel value="#{ingreso.ingreso_dependencia}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Operador">
+                            <p:outputLabel value="#{ingreso.ingreso_operador}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Dispositivo">
+                            <p:outputLabel value="#{ingreso.ingreso_dispositivo}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Equipo">
+                            <p:outputLabel value="#{ingreso.ingreso_equipo}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Placa">
+                            <p:outputLabel value="#{ingreso.ingreso_placa}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Fecha Ingreso">
+                            <p:outputLabel value="#{ingreso.ingreso_fechaIngreso}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Peaje">
+                            <p:outputLabel value="#{ingreso.ingreso_peaje}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Sentido">
+                            <p:outputLabel value="#{ingreso.ingreso_sentido}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Monto">
+                            <p:outputLabel value="#{ingreso.ingreso_monto}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                    <right>
+                        <p:commandButton value="Guardar" actionListener="#{manejadorIngreso_1.registrar()}"/>
+                    </right>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
