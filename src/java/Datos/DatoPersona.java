@@ -34,6 +34,8 @@ public class DatoPersona extends Conexion {
         }
     }
     
+    
+    
     public List<Persona> listar() throws Exception{
         
         List<Persona> lista;

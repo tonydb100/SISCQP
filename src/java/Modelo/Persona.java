@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.Date;
+import org.primefaces.model.UploadedFile;
 
 public class Persona {
     

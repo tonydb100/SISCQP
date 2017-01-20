@@ -2,11 +2,15 @@ package Manejador;
 
 import Modelo.Persona;
 import Datos.DatoPersona;
+import java.io.InputStream;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @ViewScoped
@@ -16,6 +20,7 @@ public class ManejadorPersona {
     private Persona persona = new Persona();
     private List<Persona> lstPersona;
     private String accion;
+    private UploadedFile file;
 
     public String getAccion() {
         return accion;
@@ -46,6 +51,26 @@ public class ManejadorPersona {
         boolean res;
         res = FacesContext.getCurrentInstance().isPostback();
         return res;
+    }
+    
+    public void subirFoto(FileUploadEvent event) {
+        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+    
+    public void nombreImagen() {
+        
+        if (file != null) {
+            try {
+                persona.setFoto(file.getFileName());
+ 
+            } catch (Exception e) {
+                System.out.println("Exception-File Upload." + e.getMessage());
+            }
+        }else{
+            FacesMessage msg = new FacesMessage("Please select image!!");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
    
     public void operar() throws Exception{

@@ -13,7 +13,6 @@
     </h:head>
 
     <ui:insert name="top">
-        
         <div id="banner" class="ui-g">
             <div class="ui-g-12 ui-md-6 ui-lg-3">
                 <h:graphicImage library="images" name="banner_estudios.png"/>
@@ -24,21 +23,22 @@
             <h:form>  
                 <p:growl id="messages" showDetail="true"/>
                 <p:menubar id="menu">
+                    
                     <p:menuitem style="align-content: right" value="Pagina Principal" url="principal.xhtml"/>
 
-                    <p:menuitem value="Pagos" url="pago_1.xhtml" />
+                    <p:menuitem value="Ingreso" url="ingreso.xhtml"/>
 
-                    <p:menuitem value="Dispositivos" url="dispositivo.xhtml" />
+                    <p:menuitem value="Dispositivo" url="dispositivo.xhtml"/>
 
-                    <p:menuitem value="Tarjetas" url="tarjeta.xhtml" />
+                    <p:menuitem value="Tarjeta" url="tarjeta.xhtml"/>
 
-                    <p:menuitem value="Reservas" url="reserva.xhtml" />
+                    <p:menuitem value="Reserva" url="reserva.xhtml"/>
 
-                    <p:menuitem value="Usuarios" url="persona.xhtml" />
+                    <p:menuitem value="Usuario" url="persona.xhtml"/>
 
-                    <p:menuitem value="Peajes" url="peaje.xhtml" />
+                    <p:menuitem value="Peaje" url="peaje.xhtml"/>
                     
-                    <p:menuitem value="Reportes" url="reporte.xhtml" />
+                    <p:menuitem value="Reporte" url="reporte.xhtml"/>
 
                     <f:facet name="options">
                         <p:commandButton value="Salir" action="index?faces-redirect=true" icon="ui-icon-extlink"/>
@@ -46,7 +46,6 @@
                 </p:menubar>
             </h:form>       
         </div>
-
     </ui:insert>
 
     <ui:insert name="content"></ui:insert>
@@ -54,17 +53,12 @@
     <ui:insert name="bottom" id="bottom">
         <div id="footer" class="ui-g" styleClass="ui-responsive">
             <div class="ui-g-12 ui-md-6 ui-lg-3">
-                <p id="text1" align="center">
-                    Ministerio de Obras P&uacute;blicas y Transportes<br/> &copy;&nbsp;2016
-                </p> 
-                <p id="text3" align="center">
-                    Anthony Morales Salazar + Jorge Ribas Zabala
-                </p>
+                <p id="text1" align="center">Ministerio de Obras P&uacute;blicas y Transportes<br/>San Jos&eacute;, Costa Rica<br/>&copy;&nbsp;2017</p> 
+                <p id="text3" align="center">Jorge Ribas Zabala - Anthony Morales Salazar</p>
             </div>
             <p:idleMonitor timeout="300000">
                 <p:ajax event="idle" listener="#{LoginB.llamarpaginaerror}"/>
             </p:idleMonitor>                 
         </div>
     </ui:insert>
-
 </html>

@@ -23,7 +23,7 @@
                     <left>
                         <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorReserva.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
                     </left>
-
+                    <br/>
                     <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorReserva.lstReserva}" var="reserva" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Codigo">
@@ -53,39 +53,45 @@
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
                         <p:panelGrid id="pan" styleClass="ui-responsive">
-
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Codigo:"/>
                                 </p:column>
+                                
                                 <p:column>
                                     <p:inputText value="#{manejadorReserva.reserva.reserva_codigo}"/>
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Monto Restante:"/>
                                 </p:column>
+                                
                                 <p:column>
                                     <p:inputText value="#{manejadorReserva.reserva.reserva_montoRestante}"/>
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Descripcion:"/>
                                 </p:column>
+                                
                                 <p:column>
                                     <p:inputText value="#{manejadorReserva.reserva.reserva_descripcion}"/>
                                 </p:column>
+                                
                             </p:row>
-                            
                         </p:panelGrid>
-                        
                         <center>
                             <p:commandButton value="#{manejadorReserva.accion}" actionListener="#{manejadorReserva.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
                             <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
                         </center>
-                        
+                        <br/>
                     </h:form>
                 </p:dialog>
 

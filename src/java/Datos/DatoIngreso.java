@@ -1,14 +1,11 @@
 package Datos;
 
 import Modelo.Ingreso;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class DatoIngreso extends Conexion {
@@ -17,7 +14,8 @@ public class DatoIngreso extends Conexion {
         
         try {
             this.Conectar();
-//        per.setFechaRegisto(this.obtenerHora());
+            this.getCn().setAutoCommit(false);
+            
             PreparedStatement st = this.getCn().prepareStatement("INSERT INTO ingreso (ingreso_fecha, ingreso_dependencia, ingreso_operador, ingreso_dispositivo, ingreso_equipo, "
                             + "ingreso_placa, ingreso_fechaIngreso, ingreso_peaje, ingreso_sentido, ingreso_monto) "
                             + "values (?,?,?,?,?,?,?,?,?,?)");
@@ -32,23 +30,15 @@ public class DatoIngreso extends Conexion {
             st.setString(9, per.getIngreso_sentido());
             st.setInt(10, per.getIngreso_monto());
             st.executeUpdate();
+            st.close();
         } catch (ClassNotFoundException | SQLException e) {
+            this.getCn().rollback();
             throw e;
         } finally {
             this.cerrar();
         }
     }
-    
-    public String obtenerHora(){
-        
-        Calendar c = GregorianCalendar.getInstance();
-        Date fecha = c.getTime();
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        String fechaFinal = f.format(fecha);
-        
-        return fechaFinal;
-    }
-    
+   
     public List<Ingreso> listar() throws Exception{
         
         List<Ingreso> lista;
@@ -83,7 +73,7 @@ public class DatoIngreso extends Conexion {
         }
         return lista;
     }
-    
+   
     public Ingreso leerID(Ingreso per) throws Exception{
         
         Ingreso pers = null;
@@ -117,7 +107,7 @@ public class DatoIngreso extends Conexion {
         
         return pers;
     }
-    
+ 
     public void modificar(Ingreso per) throws Exception{
         try {
             this.Conectar();

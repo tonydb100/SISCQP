@@ -20,10 +20,11 @@
                 <h:form id="fm" styleClass="ui-responsive">
                     
                     <h3 align="center">Mantenimiento de Usuarios</h3>
+                    <br/>
                     <left>
                         <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorPersona.setAccion('Registrar')}" update=":dlgDatos" title="Registrar Nuevo"/>
                     </left>
-
+                    <br/>
                     <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorPersona.lstPersona}" var="persona" emptyMessage="Sin registros para mostrar">
 
                         <p:column headerText="Cédula">
@@ -81,7 +82,7 @@
                 </h:form>
 
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
-                    <h:form>
+                    <h:form enctype="multipart/form-data">
                         <p:panelGrid id="pan" styleClass="ui-responsive">
 
                             <p:row>
@@ -113,7 +114,8 @@
                                     <p:outputLabel value="Foto:"/>
                                 </p:column>
                                 <p:column>
-                                    <p:inputText value="#{manejadorPersona.persona.foto}"/>
+                                    <p:fileUpload fileUploadListener="#{manejadorPersona.subirFoto}" oncomplete="#{manejadorPersona.nombreImagen()}" mode="simple" dragDropSupport="false"
+                                                  update=":msj" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
                                 </p:column>
                             </p:row>
                             <p:row>

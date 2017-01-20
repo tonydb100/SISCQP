@@ -28,7 +28,7 @@
                             </p:column>
                             
                             <p:column>
-                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_reserva}" required="true" requiredMessage="Ingrese Reserva del Recurso"/>
+                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_reserva}"/>
                             </p:column>
                             
                             <p:column>
@@ -36,7 +36,7 @@
                             </p:column>
                             
                             <p:column>
-                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_registroContable}" required="true" requiredMessage="Ingrese Registro Contable"/>
+                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_registroContable}"/>
                             </p:column>
                             
                             <p:column>
@@ -44,9 +44,8 @@
                             </p:column>
                             
                             <p:column>
-                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_programaBCR}" required="true" requiredMessage="Ingrese Código Programa del B.C.R."/>
+                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_programaBCR}"/>
                             </p:column>
-                            
                         </p:row>
                     </p:panelGrid>
 
@@ -59,10 +58,10 @@
                             </p:column>
                             
                             <p:column>
-                                <p:selectOneMenu id="tarjeta" value="#{manejadorDispositivo.dispositivo.dispositivo_tarjeta}">  
-                                    <f:selectItem itemLabel="Nº De Tarjeta:" itemValue=""/>
-                                    <f:selectItems value="#{manejadorDispositivo.dispositivo.dispositivo_tarjeta}"/> 
-                                    <p:ajax update="periodo" />
+                                <p:selectOneMenu value="#{manejadorDispositivo.dispositivo.dispositivo_tarjeta}">
+                                    <f:selectItem itemLabel="1234 6443 7586" itemValue="1234 6443 7586"/>
+                                    <f:selectItem itemLabel="7534 6753 8964" itemValue="7534 6753 8964"/>
+                                    <f:selectItem itemLabel="3465 7855 7556" itemValue="3465 7855 7556"/>
                                 </p:selectOneMenu>
                             </p:column>
                             
@@ -71,9 +70,10 @@
                             </p:column>
                             
                             <p:column>
-                                <p:selectOneMenu id="periodo" value="#{manejadorDispositivo.dispositivo.dispositivo_periodoCobro}">  
-                                    <f:selectItem itemLabel="Periodo de Cobro:" itemValue=""/>
-                                    <f:selectItems value="#{manejadorDispositivo.dispositivo.dispositivo_periodoCobro}"/>
+                                <p:selectOneMenu value="#{manejadorDispositivo.dispositivo.dispositivo_periodoCobro}">  
+                                    <f:selectItem itemLabel="ENERO" itemValue="ENERO"/>
+                                    <f:selectItem itemLabel="FEBRERO" itemValue="FEBRERO"/>
+                                    <f:selectItem itemLabel="MARZO" itemValue="MARZO"/>
                                 </p:selectOneMenu>
                             </p:column>
                             
@@ -82,9 +82,9 @@
                             </p:column>
                             
                             <p:column>
-                                <p:selectOneMenu id="numFact" value="#{manejadorDispositivo.dispositivo.dispositivo_factura}"> 
-                                    <f:selectItem itemLabel="Nº De Factura:" itemValue=""/>
-                                    <f:selectItems value="#{manejadorDispositivo.dispositivo.dispositivo_factura}"/>
+                                <p:selectOneMenu value="#{manejadorDispositivo.dispositivo.dispositivo_factura}"> 
+                                    <f:selectItem itemLabel="F 123" itemValue="F 123"/>
+                                    <f:selectItem itemLabel="F 324" itemValue="F 324"/>
                                 </p:selectOneMenu>
                             </p:column>
                             
@@ -93,15 +93,15 @@
                             </p:column>
                             
                             <p:column>
-                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_montoFacturas}" required="true" requiredMessage="Ingrese Dependencia"/>
-                            </p:column>
-                            
-                            <p:column>
-                                <p:commandButton value="Registrar" oncomplete="PF('wdlgDatos').show();" actionListener="#{manejadorDispositivo.setAccion('Registrar')}" title="Registrar Nuevo" update="data"/>
+                                <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_montoFacturas}"/>
                             </p:column>
                             
                         </p:row>
                     </p:panelGrid>
+                    <br/>
+                    <left>
+                        <p:commandButton value="Guardar" actionListener="#{manejadorDispositivo.registrar()}" title="Registrar Nuevo" update="data"/>
+                    </left>
 
                     <h3>Listado</h3>
                     <p:dataTable id="data" paginator="true" rows="5" styleClass="ui-responsive" value="#{manejadorDispositivo.lstDispositivo}" var="dispositivo" emptyMessage="Sin registros para mostrar">
@@ -148,67 +148,87 @@
                 <p:dialog header="Actualizar Datos" widgetVar="wdlgDatos" id="dlgDatos">
                     <h:form>
                         <p:panelGrid id="pan" styleClass="ui-responsive">
-                            
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Reserva de Recurso:"/>
                                 </p:column>
+                                
                                 <p:column>
-                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_reserva}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_reserva}"/>
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Registro Contable: "/>
                                 </p:column>
+                                
                                 <p:column>
-                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_registroContable}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_registroContable}"/>
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Código Programa del B.C.R. "/>
                                 </p:column>
+                                
                                 <p:column>
-                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_programaBCR}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_programaBCR}"/>
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Nº De Tarjeta:" />
                                 </p:column>
+                                
                                 <p:column>
                                     <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_tarjeta}"/> 
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <h:outputText value="Periodo de Cobro:"/>  
                                 </p:column>
+                                
                                 <p:column>
                                     <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_periodoCobro}"/>
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <h:outputText value="Nº de Factura:"/>  
                                 </p:column>
+                                
                                 <p:column>
                                     <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_factura}"/>
                                 </p:column>
+                                
                             </p:row>
                             <p:row>
+                                
                                 <p:column>
                                     <p:outputLabel value="Monto De Facturas ₡"/>
                                 </p:column>
+                                
                                 <p:column>
-                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_montoFacturas}" required="true" requiredMessage="Ingrese Dependencia"/>
+                                    <p:inputText value="#{manejadorDispositivo.dispositivo.dispositivo_montoFacturas}"/>
                                 </p:column>
+                                
                             </p:row>
-                            
                         </p:panelGrid>
+                        <br/>
                         <center>
-                            <p:commandButton value="#{manejadorDispositivo.accion}" actionListener="#{manejadorDispositivo.operar()}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
+                            <p:commandButton value="Modificar" actionListener="#{manejadorDispositivo.leerID(dispositivo)}" oncomplete="PF('wdlgDatos').hide();" update=":fm:data"/>
                             <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();"/>
                         </center>
                     </h:form>

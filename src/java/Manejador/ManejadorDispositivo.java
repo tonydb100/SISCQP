@@ -3,6 +3,7 @@ package Manejador;
 import Datos.DatoDispositivo;
 import Modelo.Dispositivo;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -15,7 +16,6 @@ public class ManejadorDispositivo {
     
     private Dispositivo dispositivo = new Dispositivo();
     private List<Dispositivo> lstDispositivo;
-    private String accion;
      
     public Dispositivo getDispositivo() {
         return dispositivo;
@@ -23,15 +23,6 @@ public class ManejadorDispositivo {
 
     public void setDispositivo(Dispositivo dispositivo) {
         this.dispositivo = dispositivo;
-    }
-
-    public String getAccion() {
-        return accion;
-    }
-
-    public void setAccion(String accion) {
-        this.limpiar();
-        this.accion = accion;
     }
 
     public List<Dispositivo> getLstDispositivo() {
@@ -48,20 +39,6 @@ public class ManejadorDispositivo {
         return res;
     }
    
-    public void operar() throws Exception{
-        
-        switch(accion){
-            case "Registrar":
-                this.registrar();
-                this.limpiar();
-                break;
-            case "Modificar":
-                this.modificar();
-                this.limpiar();
-                break;
-        }
-    }
-    
     private void limpiar(){
         this.dispositivo.setDispositivo_tarjeta("");
         this.dispositivo.setDispositivo_periodoCobro("");
@@ -69,15 +46,16 @@ public class ManejadorDispositivo {
         this.dispositivo.setDispositivo_montoFacturas(0);
     }
     
-    private void registrar() throws Exception{
+    public void registrar() throws Exception{
         
         DatoDispositivo dao;
-        
         try {
             dao = new DatoDispositivo();
             dao.registrar(dispositivo);
             this.listar("V");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Exitoso"));
         } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Error"));
             throw e;
         }
     }
@@ -85,7 +63,6 @@ public class ManejadorDispositivo {
     private void modificar() throws Exception{
         
         DatoDispositivo dao;
-        
         try {
             dao = new DatoDispositivo();
             dao.modificar(dispositivo);
@@ -99,7 +76,6 @@ public class ManejadorDispositivo {
     public void listar(String valor) throws Exception{
         
         DatoDispositivo dao;
-        
         try {
             if(valor.equals("F")){
                 if(isPostBack() == false){
@@ -120,14 +96,13 @@ public class ManejadorDispositivo {
         
         DatoDispositivo dao;
         Dispositivo temp;
-        
         try {
             dao = new DatoDispositivo();
             temp = dao.leerID(per);
             
             if (temp != null) {
                 this.dispositivo = temp;
-                this.accion = "Modificar";
+                this.modificar();
             }
             
         } catch (Exception e) {
@@ -139,7 +114,6 @@ public class ManejadorDispositivo {
     public void eliminar(Dispositivo per) throws Exception{
         
         DatoDispositivo dao;
-        
         try {
             dao = new DatoDispositivo();
             dao.eliminarID(per);

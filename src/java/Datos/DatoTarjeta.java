@@ -4,11 +4,7 @@ import Modelo.Tarjeta;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class DatoTarjeta extends Conexion {
@@ -17,7 +13,6 @@ public class DatoTarjeta extends Conexion {
 
         try {
             this.Conectar();
-//        per.setFechaRegisto(this.obtenerHora());
             PreparedStatement st = this.getCn().prepareStatement("INSERT INTO tarjeta (tarjeta_id, tarjeta_dependencia, tarjeta_ejecutor, tarjeta_programa, tarjeta_encargadoTarjeta, tarjeta_subprograma,\n"
                     + "tarjeta_areaActividad, tarjeta_cedula, tarjeta_correoElectronico, tarjeta_numeroOficina, tarjeta_domicilioEncargadoTarjeta,\n"
                     + "tarjeta_fecha, tarjeta_codigoBCR, tarjeta_operador, tarjeta_cedulaOperador, tarjeta_numeroEquipo, tarjeta_numeroPlaca)"
@@ -45,16 +40,6 @@ public class DatoTarjeta extends Conexion {
         } finally {
             this.cerrar();
         }
-    }
-
-    public String obtenerHora(){
-
-        Calendar c = GregorianCalendar.getInstance();
-        Date fecha = c.getTime();
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        String fechaFinal = f.format(fecha);
-
-        return fechaFinal;
     }
 
     public List<Tarjeta> listar() throws Exception {
